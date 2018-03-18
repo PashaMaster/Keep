@@ -8,22 +8,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var note_item_1 = require("../item/note.item");
-var dialog;
+var add, detail;
 var NoteComponent = /** @class */ (function () {
     function NoteComponent() {
+        this.testItem = { id: 0, textNote: "", dateOfBegin: new Date(''), autor: "" };
+        this.selectedItem = this.testItem;
         /**
-          * Поле, которое хранит в себе массив элементов списка
-          */
-        this.items = [];
+         * Поле, которое хранит в себе массив элементов списка
+         */
+        this.items = [
+            { id: 1, textNote: "Hello!" },
+            { id: 2, textNote: "I am Pash" },
+            { id: 3, textNote: "Good morning:)" },
+            { id: 4, textNote: "What do you do?" }
+        ];
     }
-    NoteComponent.prototype.ngAfterViewInit = function () {
-        dialog = document.querySelector('dialog');
-        document.querySelector('#show').onclick = function () {
-            dialog.showModal();
+    NoteComponent.prototype.ngOnInit = function () {
+        add = document.querySelectorAll('dialog')[0];
+        document.querySelector('#showAdd').onclick = function () {
+            add.showModal();
         };
-        document.querySelector('.close').onclick = function () {
-            dialog.close();
+        document.querySelector('.closeAdd').onclick = function () {
+            add.close();
         };
+    };
+    NoteComponent.prototype.selected = function (item) {
+        return 'showDetail' + item.id;
+    };
+    NoteComponent.prototype.onSelected = function (item) {
+        if (item != this.selectedItem) {
+            $('#showDetail' + this.selectedItem.id).slideToggle();
+            $('#showDetail' + item.id).slideToggle();
+            this.selectedItem = item;
+        }
+        else {
+            $('#showDetail' + item.id).slideToggle();
+            this.selectedItem = this.testItem;
+        }
     };
     /**
      * Метод, который добавляет записку
@@ -44,11 +65,10 @@ var NoteComponent = /** @class */ (function () {
     };
     NoteComponent.prototype.removeItem = function (id) {
         var newItems = [];
-        for (var _i = 0, _a = this.items; _i < _a.length; _i++) {
-            var item = _a[_i];
+        this.items.forEach(function (item, i, items) {
             if (item.id != id)
                 newItems.push(new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
-        }
+        });
         this.items = newItems;
     };
     NoteComponent = __decorate([

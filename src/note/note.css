@@ -1,4 +1,4 @@
-#modal_form {
+.modal_form {
 	width: 450px; 
 	height: 450px; /* Рaзмеры дoлжны быть фиксирoвaны */
 	border: 1px #000 solid;
@@ -10,7 +10,7 @@
 	margin-left: -150px; /* тут вся мaгия центрoвки css, oтступaем влевo и вверх минус пoлoвину ширины и высoты сooтветственнo =) */
 	padding: 20px 10px;
 }
-#overlay {
+.overlay {
 	z-index:3; /* пoдлoжкa дoлжнa быть выше слoев элементoв сaйтa, нo ниже слoя мoдaльнoгo oкнa */
 	position:fixed; /* всегдa перекрывaет весь сaйт */
 	background-color:#000; /* чернaя */
@@ -101,7 +101,7 @@ input[type=range]::-webkit-slider-runnable-track {
   background-color: #EEE;
   margin: .5em;
   padding: .3em 0;
-  height: 3em;
+  height: auto;
   border-radius: 4px;
 }
 .notes li.selected:hover {
@@ -221,4 +221,21 @@ input[type=range]::-webkit-slider-runnable-track {
 .button:active:after{
 	color:#dbd2d2;
 	text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
+}
+
+.selected {
+	background-color: #CFD8DC !important;
+	color: white;
+}
+
+.btnw{
+  width: 6em;
+}
+
+input.ng-touched.ng-invalid.form-control {border:solid red 2px;}
+input.ng-touched.ng-valid.form-control {border:solid green 2px;}
+
+.detail {
+	margin-top: 0.5em;
+	margin-bottom: 1em;
 }

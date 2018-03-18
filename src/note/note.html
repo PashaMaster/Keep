@@ -1,7 +1,7 @@
 <div class="content">
   
   <ul class="notes">
-      <li (click) = "notSelected()">
+      <li>
           <span class="badge">
               ID
           </span>
@@ -16,17 +16,28 @@
           <span class="badge">
               {{item.id}} 
           </span>
-          <div class="note" (click) = "onSelected(item)">
+          <div class="note"   (click) = "onSelected(item)">
             {{item.textNote}} 
           </div>
+          
           <div class="delete">  
               <button class="delete-link" (click)="removeItem(item.id)">
                   &#10008;
               </button>
           </div>            
+          <div id="{{selected(item)}}" class="detail" style="display: none;">
+             <form class="form-group">
+                <label>Note:</label>
+                <input class="form-control" name="text" [(ngModel)]="item.textNote">
+                <label>Date:</label>
+                <input class="form-control" name="date" type="date" [(ngModel)]="item.dateOfBegin"/>
+                <label>Autor:</label>
+                <input class="form-control" name="name" [(ngModel)]="item.autor" />
+             </form>   
+          </div>
       </li>
   </ul>
-  <dialog id="modal_form add">
+  <dialog class="modal_form">
       <legend>Add element:</legend>
   	  <div class="form-inline">
           <form class="form-group">
@@ -44,29 +55,9 @@
              </button>
           </form>                        
       </div>
-     <a class="close" title="Закрыть"></a>
-  </dialog>
-  <dialog id="modal_form detail">
-      <!--<legend>Add element:</legend>
-      <div class="form-inline">
-          <form class="form-group">
-            <input class="form-control" name="text" [(ngModel)]="textN" 
-             placeholder = "Note" #text="ngModel" required/>
-            <input class="form-control" name="date" type="date" [(ngModel)]="dateN" 
-              placeholder = "Date" />
-            <input class="form-control" name="name" [(ngModel)]="nameN" 
-              placeholder = "Name" />
-            <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw" (click)="addItem(textN, dateN, nameN)">
-                Add
-             </button>
-             <button type="reset" class="btn btn-default btnw">
-                Clear
-             </button>
-          </form>                        
-      </div>-->
-     <a class="close" title="Закрыть"></a>
+     <a class="close closeAdd" title="Закрыть"></a>
   </dialog>
 </div>
 <div class="buttonHolder">
-    <a id="show" class="button tick"></a>
+    <a id="showAdd" class="button tick"></a>
 </div>

@@ -2,7 +2,9 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NoteItem } from '../item/note.item'; 
 
-var dialog;
+declare var jquery:any;
+declare var $ :any;
+var add, detail;
 
 @Component({
     selector: 'note-app',
@@ -11,23 +13,43 @@ var dialog;
     providers: []
 })
 
-export class NoteComponent{
+export class NoteComponent implements OnInit{
 
-	  ngAfterViewInit(){
-      dialog = document.querySelector('dialog');
-  		document.querySelector('#show').onclick = function() {
-  		  dialog.showModal();
+    testItem: NoteItem = {id: 0, textNote: "", dateOfBegin: new Date(''), autor: ""};
+    selectedItem: NoteItem = this.testItem;
+    
+
+
+	  ngOnInit(){
+      add = document.querySelectorAll('dialog')[0];
+  		document.querySelector('#showAdd').onclick = function() {
+  		  add.showModal();
   		};
-  		document.querySelector('.close').onclick = function() {
-  		  dialog.close();
+  		document.querySelector('.closeAdd').onclick = function() {
+  		  add.close();
   		};
     }
 
-    /** 
-      * Поле, которое хранит в себе массив элементов списка
-      */
-    items: NoteItem[]=[];
+   
 
+    selected(item: NoteItem) : string {
+      return 'showDetail' + item.id;
+    }
+
+    onSelected(item: NoteItem) : void {
+
+        if (item!=this.selectedItem)
+        {
+          $('#showDetail'+this.selectedItem.id).slideToggle();
+          $('#showDetail'+item.id).slideToggle();
+          this.selectedItem = item;
+        }
+        else
+        {
+          $('#showDetail'+item.id).slideToggle();
+          this.selectedItem = this.testItem;
+        }
+    }
 
      /** 
       * Метод, который добавляет записку
@@ -53,15 +75,23 @@ export class NoteComponent{
     removeItem(id: number): void {
       
       let newItems : NoteItem[]=[];
-      for (var item of this.items) {
+      this.items.forEach(function(item,i, items) { 
         if (item.id != id)
           newItems.push(new NoteItem(item.id, item.textNote,  item.dateOfBegin, item.autor));
-       }
+       });
       this.items=newItems;
     }
 
-
-
+     /** 
+      * Поле, которое хранит в себе массив элементов списка
+      */
+    items: NoteItem[]=[
+        { id: 1, textNote: "Hello!"},
+        { id: 2, textNote: "I am Pash"},
+        { id: 3, textNote: "Good morning:)"},
+        { id: 4, textNote: "What do you do?"}
+  
+    ];
 
 
 
