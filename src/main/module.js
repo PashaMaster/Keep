@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = require("@angular/common/http");
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
+var core_2 = require("@ngx-translate/core");
+var http_loader_1 = require("@ngx-translate/http-loader");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var http_2 = require("@angular/http");
@@ -24,9 +26,10 @@ var routers = [
   * Функция, которая определяет параметры для перевода(открывает json файл определенного языка)
   * @param=httpClient переменная, передпющая данные клиента
   */
-//export function HttpLoaderFactory(httpClient: HttpClient) {
-//  return new TranslateHttpLoader(httpClient, "i18n/", ".json");
-//}
+function HttpLoaderFactory(httpClient) {
+    return new http_loader_1.TranslateHttpLoader(httpClient, "i18n/", ".json");
+}
+exports.HttpLoaderFactory = HttpLoaderFactory;
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -42,6 +45,13 @@ var AppModule = /** @class */ (function () {
                 router_1.RouterModule.forRoot(routers),
                 http_2.HttpModule,
                 http_1.HttpClientModule,
+                core_2.TranslateModule.forRoot({
+                    loader: {
+                        provide: core_2.TranslateLoader,
+                        useFactory: HttpLoaderFactory,
+                        deps: [http_1.HttpClient]
+                    }
+                })
             ],
             providers: [],
             bootstrap: [

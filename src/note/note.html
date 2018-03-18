@@ -3,10 +3,10 @@
   <ul class="notes">
       <li>
           <span class="badge">
-              ID
+            ID
           </span>
           <div class="note">
-            Note
+            {{'NOTES.Note' | translate}}
           </div>
       </li>
       
@@ -14,7 +14,7 @@
           [class.selected]="item === selectedItem"            
       > 
           <span class="badge">
-              {{item.id}} 
+            {{item.id}} 
           </span>
           <div class="note"   (click) = "onSelected(item)">
             {{item.textNote}} 
@@ -27,35 +27,35 @@
           </div>            
           <div id="{{selected(item)}}" class="detail" style="display: none;">
              <form class="form-group">
-                <label>Note:</label>
+                <label>{{'NOTES.Note' | translate}}:</label>
                 <input class="form-control" name="text" [(ngModel)]="item.textNote">
-                <label>Date:</label>
+                <label>{{'NOTES.Date' | translate}}:</label>
                 <input class="form-control" name="date" type="date" [(ngModel)]="item.dateOfBegin"/>
-                <label>Autor:</label>
+                <label>{{'NOTES.Name' | translate}}:</label>
                 <input class="form-control" name="name" [(ngModel)]="item.autor" />
              </form>   
           </div>
       </li>
   </ul>
   <dialog class="modal_form">
-      <legend>Add element:</legend>
+      <legend>{{'NOTES.AddElement' | translate}}:</legend>
   	  <div class="form-inline">
           <form class="form-group">
             <input class="form-control addinput" name="text" [(ngModel)]="textN" 
-             placeholder = "Note" #text="ngModel" required/>
+             placeholder = "{{'NOTES.Note' | translate}}" #text="ngModel" required/>
             <input class="form-control addinput" name="date" type="date" [(ngModel)]="dateN" 
-              placeholder = "Date" />
+              placeholder = "{{'NOTES.Date' | translate}}" />
             <input class="form-control addinput" name="name" [(ngModel)]="nameN" 
-              placeholder = "Name" />
+              placeholder = "{{'NOTES.Name' | translate}}" />
             <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw addbutton" (click)="addItem(textN, dateN, nameN)">
-                Add
+                {{'NOTES.Add' | translate}}
              </button>
              <button type="reset" class="btn btn-default btnw addbutton">
-                Clear
+                {{'NOTES.Clear' | translate}}
              </button>
           </form>                        
       </div>
-     <a class="close closeAdd" title="Закрыть"></a>
+     <a class="close closeAdd" title="{{'NOTES.Close' | translate}}"></a>
   </dialog>
 </div>
 <div class="buttonHolder">

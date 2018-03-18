@@ -22,9 +22,9 @@ const routers = [
   * Функция, которая определяет параметры для перевода(открывает json файл определенного языка)
   * @param=httpClient переменная, передпющая данные клиента
   */
-//export function HttpLoaderFactory(httpClient: HttpClient) {
-  //  return new TranslateHttpLoader(httpClient, "i18n/", ".json");
-//}
+export function HttpLoaderFactory(httpClient: HttpClient) {
+    return new TranslateHttpLoader(httpClient, "i18n/", ".json");
+}
 
 @NgModule({
     declarations: [ 
@@ -37,13 +37,13 @@ const routers = [
     	RouterModule.forRoot(routers),
       HttpModule,
     	HttpClientModule,
-	//    TranslateModule.forRoot({
-    //         loader: {
-      //          provide: TranslateLoader,
-        //        useFactory: HttpLoaderFactory,
-          //      deps: [HttpClient]
-            //}
-        //})
+	    TranslateModule.forRoot({
+             loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })
     ],
 	providers: [], 
     bootstrap: [ 

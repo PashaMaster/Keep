@@ -3,27 +3,22 @@
 	{
 		"Language":"Language",
 		"Title":"My notes",
-		"ButtonDashboard":"Dashboard",
-		"ButtonNotes":"Notes"
-	},
-	"Dashboard":{
-		"h3" : "Dashboard"
-	},
-	"DETAIL":
-	{
-		"ID":"ID",
-		"Note":"Note",
-		"Date":"Date",
-		"Autor":"Autor"
+		"Word":"Input word",
+		"Note":"Notes",
+		"Arhive":"Arhive",
+		"Garbage":"Garbage",
+		"Settings":"Settings",
+		"Contacts":"Contacts"
 	},
 	"NOTES":
 	{
+		"AddElement":"Add note",
 		"Add":"Add",
 		"Note":"Note",
 		"Number":"Number note",
 		"Remove":"Remove",
 		"NoteIn":"Note",
-		"Name":"Name",
+		"Name":"Name autor",
 		"Date":"Date",
 		"Clear":"Clear"
 	}

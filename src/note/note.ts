@@ -19,7 +19,7 @@ export class NoteComponent implements OnInit{
     selectedItem: NoteItem = this.testItem;
     
 	  ngOnInit(){
-      add = document.querySelectorAll('dialog')[0];
+      add = document.querySelectorAll('dialog')[1];
   		document.querySelector('#showAdd').onclick = function() {
   		  add.showModal();
   		};
@@ -27,7 +27,6 @@ export class NoteComponent implements OnInit{
   		  add.close();
   		};
     }
-
 
     selected(item: NoteItem) : string {
       return 'showDetail' + item.id;

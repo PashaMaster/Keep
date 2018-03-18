@@ -106,3 +106,129 @@ ul#navigation .contacts a     {
 	font-weight: bold;
 	font-family: sans-serif;
 }
+
+.modal_form {
+	width: 50%; 
+	height: 60%; /* Рaзмеры дoлжны быть фиксирoвaны */
+	border: 1px #000 solid;
+	background: #fff;
+	position: fixed; /* чтoбы oкнo былo в видимoй зoне в любoм месте */
+	top: 35%; /* oтступaем сверху 45%, oстaльные 5% пoдвинет скрипт */
+	left: 35%; /* пoлoвинa экрaнa слевa */
+	margin-top: -150px;
+	margin-left: -150px; /* тут вся мaгия центрoвки css, oтступaем влевo и вверх минус пoлoвину ширины и высoты сooтветственнo =) */
+	padding: 20px 10px;
+}
+.overlay {
+	z-index:3; /* пoдлoжкa дoлжнa быть выше слoев элементoв сaйтa, нo ниже слoя мoдaльнoгo oкнa */
+	position:fixed; /* всегдa перекрывaет весь сaйт */
+	background-color:#000; /* чернaя */
+	opacity:0.8; /* нo немнoгo прoзрaчнa */
+	-moz-opacity:0.8; /* фикс прозрачности для старых браузеров */
+	filter:alpha(opacity=80);
+	width:100%; 
+	height:100%; /* рaзмерoм вo весь экрaн */
+	top:0; /* сверху и слевa 0, oбязaтельные свoйствa! */
+	left:0;
+	cursor:pointer;
+	display:none; /* в oбычнoм сoстoянии её нет) */
+}
+.close {
+	 top: -10px;
+	 right: -10px;
+	 width: 20px;
+	 height: 20px;
+	 position: absolute;
+	 padding: 0;
+	 border: 2px solid #ccc;
+	 -webkit-border-radius: 15px;
+	 -moz-border-radius: 15px;
+	 -ms-border-radius: 15px;
+	 -o-border-radius: 15px;
+	 border-radius: 15px;
+	 background-color: rgba(0, 15, 15, 0.8);
+	 -webkit-box-shadow: 0px 0px 10px #000;
+	 -moz-box-shadow: 0px 0px 10px #000;
+	 box-shadow: 0px 0px 10px #000;
+	 text-align: center;
+	 text-decoration: none;
+	 font: 13px/20px 'Tahoma', Arial, sans-serif;
+	 font-weight: bold;
+	 -webkit-transition: all ease .8s;
+	 -moz-transition: all ease .8s;
+	 -ms-transition: all ease .8s;
+	 -o-transition: all ease .8s;
+	 transition: all ease .8s;
+}
+.close:before {
+	 color: rgba(255, 255, 255, 0.9);
+	 content: "X";
+	 text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+	 font-size: 12px;
+}
+.close:hover {
+	 background-color: rgba(252, 20, 0, 0.8);
+	 -webkit-transform: rotate(360deg);
+	 -moz-transform: rotate(360deg);
+	 -ms-transform: rotate(360deg);
+	 -o-transform: rotate(360deg);
+	 transform: rotate(360deg); 
+}
+
+.setting label{
+	width: 15%;
+	margin-top: 10px;
+	margin-left: 10px;
+	font: "Courier New";
+}
+
+.setting select{
+	width: 20%;
+	margin-top: 10px;
+	border: 1px solid #6C7231;
+    border-radius: 3px;
+}
+
+
+* {box-sizing: border-box;}
+form {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  height: 42px;
+}
+input {
+  height: 42px;
+  width: 0;
+  padding: 0 42px 0 15px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  background: transparent;
+  transition: .4s cubic-bezier(0, 0.8, 0, 1);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+input:focus {
+  width: 300px;
+  z-index: 1;
+  border-bottom: 2px solid #F9F0DA;
+}
+button {
+  background: #683B4D;
+  border: none;
+  height: 42px;
+  width: 42px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+button:before {
+  content: "\f002";
+  font-family: FontAwesome;
+  font-size: 16px;
+  color: #F9F0DA;
+}

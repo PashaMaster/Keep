@@ -3,21 +3,16 @@
 	{
 		"Language":"Язык",
 		"Title":"Мои записки",
-		"ButtonDashboard":"Панель",
-		"ButtonNotes":"Записки"
+		"Word":"Введите слово",
+		"Note":"Записки",
+		"Arhive":"Архив",
+		"Garbage":"Корзина",
+		"Settings":"Настройки",
+		"Contacts":"Контакты"
 	},
-    "Dashboard":{
-		"h3" : "Панель"
-	},
-	"DETAIL":
+    "NOTES":
 	{
-		"ID":"Номер",
-		"Note":"Записка",
-		"Date":"Дата",
-		"Autor":"Имя автора"
-	},
-	"NOTES":
-	{
+		"AddElement":"Добавить записку",
 		"Add":"Добавить",
 		"Note":"Текст записки",
 		"Number":"Номер записки",

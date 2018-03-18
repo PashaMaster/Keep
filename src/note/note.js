@@ -24,7 +24,7 @@ var NoteComponent = /** @class */ (function () {
         ];
     }
     NoteComponent.prototype.ngOnInit = function () {
-        add = document.querySelectorAll('dialog')[0];
+        add = document.querySelectorAll('dialog')[1];
         document.querySelector('#showAdd').onclick = function () {
             add.showModal();
         };
