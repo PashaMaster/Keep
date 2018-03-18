@@ -41,16 +41,16 @@
       <legend>Add element:</legend>
   	  <div class="form-inline">
           <form class="form-group">
-            <input class="form-control" name="text" [(ngModel)]="textN" 
+            <input class="form-control addinput" name="text" [(ngModel)]="textN" 
              placeholder = "Note" #text="ngModel" required/>
-            <input class="form-control" name="date" type="date" [(ngModel)]="dateN" 
+            <input class="form-control addinput" name="date" type="date" [(ngModel)]="dateN" 
               placeholder = "Date" />
-            <input class="form-control" name="name" [(ngModel)]="nameN" 
+            <input class="form-control addinput" name="name" [(ngModel)]="nameN" 
               placeholder = "Name" />
-            <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw" (click)="addItem(textN, dateN, nameN)">
+            <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw addbutton" (click)="addItem(textN, dateN, nameN)">
                 Add
              </button>
-             <button type="reset" class="btn btn-default btnw">
+             <button type="reset" class="btn btn-default btnw addbutton">
                 Clear
              </button>
           </form>                        

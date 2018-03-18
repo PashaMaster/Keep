@@ -18,8 +18,6 @@ export class NoteComponent implements OnInit{
     testItem: NoteItem = {id: 0, textNote: "", dateOfBegin: new Date(''), autor: ""};
     selectedItem: NoteItem = this.testItem;
     
-
-
 	  ngOnInit(){
       add = document.querySelectorAll('dialog')[0];
   		document.querySelector('#showAdd').onclick = function() {
@@ -30,7 +28,6 @@ export class NoteComponent implements OnInit{
   		};
     }
 
-   
 
     selected(item: NoteItem) : string {
       return 'showDetail' + item.id;
@@ -92,11 +89,4 @@ export class NoteComponent implements OnInit{
         { id: 4, textNote: "What do you do?"}
   
     ];
-
-
-
-
-
 } 
-
-
