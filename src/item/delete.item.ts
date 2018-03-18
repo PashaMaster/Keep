@@ -21,7 +21,7 @@ export class DeleteItem{
 	  */
 	constructor(item: NoteItem, date: Date) {
   
-		this.item=item;
+		this.item = item;
 		this.date = date;
     }
 }

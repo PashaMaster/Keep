@@ -44,9 +44,15 @@ var NoteComponent = /** @class */ (function () {
         this.getItems();
         this.getDeleteItems();
     };
+    /**
+      * Метод,который получает данные корзины из хранилища
+      */
     NoteComponent.prototype.getDeleteItems = function () {
         this.itemsDelete = this._noteService.getDeleteItems();
     };
+    /**
+      * Метод,который записывает изменненые данные корзины в хранилища
+      */
     NoteComponent.prototype.setDeleteItems = function () {
         this._noteService.setDeleteItems(this.itemsDelete);
     };

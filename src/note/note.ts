@@ -58,11 +58,17 @@ export class NoteComponent implements OnInit{
       this.getDeleteItems();
     }
 
+    /** 
+      * Метод,который получает данные корзины из хранилища
+      */
     getDeleteItems() {
 
         this.itemsDelete = this._noteService.getDeleteItems();
     }
 
+    /** 
+      * Метод,который записывает изменненые данные корзины в хранилища
+      */
     setDeleteItems() {
 
         this._noteService.setDeleteItems(this.itemsDelete);

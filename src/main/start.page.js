@@ -20,11 +20,18 @@ var AppComponent = /** @class */ (function () {
       */
     function AppComponent(translate) {
         this.translate = translate;
+        /**
+          * Заголовок меню
+          */
+        this.title = "Title";
         translate.addLangs(["English", "Russian"]);
         translate.setDefaultLang('English');
         var browserLang = translate.getBrowserLang();
         translate.use(browserLang.match(/English|Russian/) ? browserLang : 'English');
     }
+    /**
+      * Метод, который выполняет скрипт для работы меню
+      */
     AppComponent.prototype.ngAfterViewInit = function () {
         $(function () {
             $(' #navigation a').stop().animate({ 'marginLeft': '-85px' }, 1000);
@@ -41,6 +48,19 @@ var AppComponent = /** @class */ (function () {
         document.querySelector('.closeSettings').onclick = function () {
             settings.close();
         };
+    };
+    /**
+      * Читаем заголовок для меню
+      */
+    AppComponent.prototype.getTitle = function () {
+        return this.title;
+    };
+    /**
+      * Устанавливаем заголовок для меню
+      * @param=title заголовок
+      */
+    AppComponent.prototype.setTitle = function (title) {
+        this.title = title;
     };
     AppComponent = __decorate([
         core_1.Component({

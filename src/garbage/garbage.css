@@ -1,0 +1,105 @@
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 0 0 1.5em 6em;
+  width: 40%;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 8px;
+  cursor: pointer;
+  animate: 0.2s;
+  border: 1px solid #575656;
+  background: #607D8B;
+}
+
+.content {
+  float: left;
+  margin-left: 20%;
+  margin-top: 2%;
+  width: 60%;
+}
+.notes {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+.notes li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: auto;
+  border-radius: 4px;
+}
+.notes li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.notes li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.notes .text {
+  position: relative;
+  top: -3px;
+}
+.notes .badge {
+  display: inline-block;
+  font-size: small;
+  width: 5%;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 2.2em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+.notes .note {
+  display: inline-block;
+  width: 87%;
+  color: #1d1d11;
+}
+.notes .delete {
+  display: inline-block;
+  width: 4%;
+}
+.notes .delete-link {
+    display: inline-block;
+    border: none;
+    border-radius: 100%;
+    background-color: #EEE;
+    color: red;
+    text-decoration: none;
+}
+.notes .delete-link:hover {
+    background-color: #DDD;
+}
+.form-group{
+  margin: 0 0 0 5em;
+  display: inline-block;
+}
+
+.selected {
+	background-color: #CFD8DC !important;
+	color: white;
+}
+
+.btnw{
+  width: 6em;
+}
+
+.detail {
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+}

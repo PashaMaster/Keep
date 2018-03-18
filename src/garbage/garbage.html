@@ -10,20 +10,27 @@
       </li>
       
       <li *ngFor="let item of itemsDelete"
-          [class.selected]="item === selectedItem"            
+          [class.selected]="item.item === selectedItem"            
       > 
           <span class="badge">
-            {{item.date}} 
+           {{item.item.id}} 
           </span>
-          <div class="note"   (click) = "onSelected(item)">
-            {{item.}} 
+          <div class="note"   (click) = "onSelected(item.item)">
+            {{item.item.textNote}} 
           </div>
-          
           <div class="delete">  
-              <button class="delete-link" (click)="removeItem(item.id)">
+              <button class="delete-link" (click)="removeItem(item.item.id)">
                   &#10008;
               </button>
           </div>            
+          <div id="{{selected(item.item)}}" class="detail" style="display: none;">
+             <form class="form-group">
+                <label>{{'NOTES.DateDel' | translate}}:</label>{{item.date | date}}<br>
+                <label>{{'NOTES.Note' | translate}}:</label>{{item.item.textNote}}<br>
+                <label>{{'NOTES.Date' | translate}}:</label>{{item.item.dateOfBegin | date}}<br>
+                <label>{{'NOTES.Name' | translate}}:</label>{{item.item.autor}}<br>
+                </form>   
+          </div>
       </li>
   </ul>
 </div>

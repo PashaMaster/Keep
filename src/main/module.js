@@ -16,6 +16,7 @@ var router_1 = require("@angular/router");
 var http_2 = require("@angular/http");
 var note_1 = require("../note/note");
 var start_page_1 = require("./start.page");
+var garbage_1 = require("../garbage/garbage");
 var arhive_1 = require("../arhive/arhive");
 /**
   * Переменная-константа, которая определяет навигацию по страницам, так же задает начальную страницу при запуске
@@ -23,6 +24,7 @@ var arhive_1 = require("../arhive/arhive");
 var routers = [
     { path: 'note', component: note_1.NoteComponent, userAsDefault: true },
     { path: 'arhive', component: arhive_1.Arhive },
+    { path: 'garbage', component: garbage_1.GarbageComponent }
 ];
 /**
   * Функция, которая определяет параметры для перевода(открывает json файл определенного языка)
@@ -40,6 +42,7 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 note_1.NoteComponent,
                 start_page_1.AppComponent,
+                garbage_1.GarbageComponent,
                 arhive_1.Arhive
             ],
             imports: [

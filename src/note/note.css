@@ -252,3 +252,9 @@ input.ng-touched.ng-valid.form-control {border:solid green 2px;}
 	width: 40%
 
 }
+
+.arhive {
+	float: left;
+	margin-top: 10px;
+	width: 100%;
+}

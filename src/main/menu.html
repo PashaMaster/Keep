@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">    
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">{{'HOME.Title' | translate}}</a>
+      <a class="navbar-brand" href="#">{{'HOME.'+getTitle() | translate}}</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-right" role="search" action="" method="post">
@@ -14,10 +14,10 @@
   </div>
 </nav>
 <ul id="navigation">
-  <li class="note"><a title="{{'HOME.Note' | translate}}" routerLink="/note"></a></li>
-  <li class="arhive"><a title="{{'HOME.Arhive' | translate}}" routerLink="/arhive"></a></li>
-  <li class="garbage"><a title="{{'HOME.Garbage' | translate}}"></a></li>
-  <li class="settings"><a id="showSettings" title="{{'HOME.Settings' | translate}}"></a></li>
+  <li class="note"><a title="{{'HOME.Note' | translate}}" (click) = "setTitle('TitleNotes')" routerLink="/note"></a></li>
+  <li class="arhive"><a title="{{'HOME.Arhive' | translate}}" (click) = "setTitle('TitleArhive')" routerLink="/arhive"></a></li>
+  <li class="garbage"><a title="{{'HOME.Garbage' | translate}}"  (click) = "setTitle('TitleGarbage')" routerLink="/garbage"></a></li>
+  <li class="settings"><a id="showSettings" title="{{'HOME.Settings' | translate}}" (click) = "setTitle('TitleSettings')"></a></li>
   <li class="contacts"><a title="{{'HOME.Contacts' | translate}}"></a></li>
 </ul>
 <dialog class="modal_form">

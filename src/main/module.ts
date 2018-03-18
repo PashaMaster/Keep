@@ -9,8 +9,10 @@ import { HttpModule } from '@angular/http';
 
 import { NoteComponent } from '../note/note';
 import { AppComponent } from './start.page';
+import { GarbageComponent } from '../garbage/garbage';
 import { Arhive } from '../arhive/arhive';
 import { Service } from '../main/service'; 
+
 
 
 /** 
@@ -19,7 +21,7 @@ import { Service } from '../main/service'; 
 const routers = [
 	{path: 'note', component: NoteComponent, userAsDefault: true},
 	{path: 'arhive', component: Arhive},
-  //{path: 'notedetail/:id', component: NoteDetailComponent}
+  {path: 'garbage', component: GarbageComponent}
 ];
 
 /** 
@@ -34,6 +36,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     declarations: [ 
         NoteComponent, 
         AppComponent,
+        GarbageComponent,
         Arhive
     ],
     imports: [ 

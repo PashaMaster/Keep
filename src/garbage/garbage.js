@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var note_item_1 = require("../item/note.item");
+var delete_item_1 = require("../item/delete.item");
 var service_1 = require("../main/service");
 var GarbageComponent = /** @class */ (function () {
     /**
@@ -18,6 +20,14 @@ var GarbageComponent = /** @class */ (function () {
       */
     function GarbageComponent(_noteService) {
         this._noteService = _noteService;
+        /**
+          * Тестовый веделяемый элемент
+          */
+        this.testItem = { id: 0, textNote: "", dateOfBegin: new Date(''), autor: "" };
+        /**
+          * Выделяемый элемент
+          */
+        this.selectedItem = this.testItem;
     }
     /**
       * Метод, который считывает данные при загрузке станицы
@@ -26,9 +36,15 @@ var GarbageComponent = /** @class */ (function () {
         this.getItems();
         this.getDeleteItems();
     };
+    /**
+      * Метод,который получает данные корзины из хранилища
+      */
     GarbageComponent.prototype.getDeleteItems = function () {
         this.itemsDelete = this._noteService.getDeleteItems();
     };
+    /**
+      * Метод,который записывает изменненые данные корзины в хранилища
+      */
     GarbageComponent.prototype.setDeleteItems = function () {
         this._noteService.setDeleteItems(this.itemsDelete);
     };
@@ -43,6 +59,45 @@ var GarbageComponent = /** @class */ (function () {
       */
     GarbageComponent.prototype.setItems = function () {
         this._noteService.setItems(this.items);
+    };
+    /**
+      * Метод, который дает id каждой записке в html
+      * @param=item объект-записка
+      */
+    GarbageComponent.prototype.selected = function (item) {
+        return 'showDetail' + item.id;
+    };
+    /**
+      * Метод, который показывает информацию о записке
+      * @param=item объект-записка
+      */
+    GarbageComponent.prototype.onSelected = function (item) {
+        if (item != this.selectedItem) {
+            $('#showDetail' + this.selectedItem.id).slideToggle();
+            $('#showDetail' + item.id).slideToggle();
+            this.selectedItem = item;
+        }
+        else {
+            $('#showDetail' + item.id).slideToggle();
+            this.selectedItem = this.testItem;
+        }
+    };
+    /** Метод, который убырает записку из корзиныы
+      * @param=id номер удаляемого элемента
+      */
+    GarbageComponent.prototype.removeItem = function (id) {
+        var delItems = [];
+        var newItem;
+        this.itemsDelete.forEach(function (item, i, itemsDelete) {
+            if (item.item.id != id)
+                delItems.push(new delete_item_1.DeleteItem(item.item, new Date()));
+            else
+                newItem = (new note_item_1.NoteItem(item.item.id, item.item.textNote, item.item.dateOfBegin, item.item.autor));
+        });
+        this.itemsDelete = delItems;
+        this.items.push(new note_item_1.NoteItem(newItem.id, newItem.textNote, newItem.dateOfBegin, newItem.autor));
+        this.setItems();
+        this.setDeleteItems();
     };
     GarbageComponent = __decorate([
         core_1.Component({

@@ -32,7 +32,9 @@ export class AppComponent {
         let browserLang = translate.getBrowserLang();
         translate.use(browserLang.match(/English|Russian/) ? browserLang : 'English');
     }
-
+    /**
+      * Метод, который выполняет скрипт для работы меню
+      */
     ngAfterViewInit(){
          $(function() {
                 $(' #navigation a').stop().animate({'marginLeft':'-85px'},1000);
@@ -54,7 +56,27 @@ export class AppComponent {
             settings.close();
           };
        }
-  
+
+    /** 
+      * Заголовок меню
+      */
+    title:string = "Title"
     
+    /** 
+      * Читаем заголовок для меню
+      */
+    getTitle():string {
+
+      return this.title;
+    }
+
+    /** 
+      * Устанавливаем заголовок для меню
+      * @param=title заголовок
+      */ 
+    setTitle(title: string):void {
+      
+      this.title = title;
+    }
 
 }

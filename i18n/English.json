@@ -3,6 +3,10 @@
 	{
 		"Language":"Language",
 		"Title":"My notes",
+		"TitleNotes":"Notes",
+		"TitleSettings":"Settings",
+		"TitleArhive":"Arhive",
+		"TitleGarbage":"Garbage",
 		"Word":"Input word",
 		"Note":"Notes",
 		"Arhive":"Arhive",
@@ -13,6 +17,7 @@
 	"NOTES":
 	{
 		"AddElement":"Add note",
+		"AddArhive":"Add to arhive",
 		"Add":"Add",
 		"Note":"Note",
 		"Number":"Number note",
@@ -20,6 +25,7 @@
 		"NoteIn":"Note",
 		"Name":"Name autor",
 		"Date":"Date",
+		"DateDel":"Date of delete",
 		"Clear":"Clear"
 	}
 }

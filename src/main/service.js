@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var note_test_1 = require("../mock/note.test");
 var Service = /** @class */ (function () {
     function Service() {
+        this.itemsArhive = [];
         this.itemsDelete = [];
         this.items = note_test_1.ITEMS;
     }
@@ -21,6 +22,12 @@ var Service = /** @class */ (function () {
     };
     Service.prototype.setItems = function (items) {
         this.items = items;
+    };
+    Service.prototype.getItemsArhive = function () {
+        return this.itemsArhive;
+    };
+    Service.prototype.setItemsArhive = function (itemsArhive) {
+        this.itemsArhive = itemsArhive;
     };
     Service.prototype.getDeleteItems = function () {
         return this.itemsDelete;

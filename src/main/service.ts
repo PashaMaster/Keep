@@ -8,6 +8,7 @@ import { DeleteItem } from '../item/delete.item'; 
 export class Service {
 
 	items: NoteItem[];
+	itemsArhive: NoteItem[] = [];
 	itemsDelete: DeleteItem[] = [];
 
 	constructor() {
@@ -20,6 +21,14 @@ export class Service {
 
 	setItems(items: NoteItem[]) {
 		this.items=items;	
+	}
+
+	getItemsArhive() {		
+		return this.itemsArhive;
+	}
+
+	setItemsArhive(itemsArhive: NoteItem[]) {
+		this.itemsArhive=itemsArhive;	
 	}
 
 	getDeleteItems() {		
