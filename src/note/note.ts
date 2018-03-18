@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NoteItem } from '../item/note.item'; 
+import { Service } from '../main/service'; 
+import { DeleteItem } from '../item/delete.item'; 
 
 declare var jquery:any;
 declare var $ :any;
@@ -15,9 +17,35 @@ var add, detail;
 
 export class NoteComponent implements OnInit{
 
+    /** 
+      * Тестовый веделяемый элемент
+      */
     testItem: NoteItem = {id: 0, textNote: "", dateOfBegin: new Date(''), autor: ""};
+
+    /** 
+      * Выделяемый элемент
+      */
     selectedItem: NoteItem = this.testItem;
-    
+     
+    /** 
+      * Массив записок
+      */
+    items: NoteItem[];
+
+    /** 
+      * Массив удаленных записок
+      */
+    itemsDelete: DeleteItem[];
+
+    /** 
+      * Конструктор класса
+      * @param=_noteService объект, которые передает мок сервис для работы
+      */
+    constructor(private _noteService: Service) {}
+
+    /** 
+      * Метод, который обрабатывает кнопку для добавления(js) и заполняет тестовые данные в массив
+      */
 	  ngOnInit(){
       add = document.querySelectorAll('dialog')[1];
   		document.querySelector('#showAdd').onclick = function() {
@@ -26,12 +54,48 @@ export class NoteComponent implements OnInit{
   		document.querySelector('.closeAdd').onclick = function() {
   		  add.close();
   		};
+      this.getItems();
+      this.getDeleteItems();
     }
 
+    getDeleteItems() {
+
+        this.itemsDelete = this._noteService.getDeleteItems();
+    }
+
+    setDeleteItems() {
+
+        this._noteService.setDeleteItems(this.itemsDelete);
+    }
+
+    /** 
+      * Метод,который получает данные из хранилища
+      */
+    getItems() {
+
+        this.items = this._noteService.getItems();
+    }
+
+    /** 
+      * Метод,который записывает изменненые данные в хранилище
+      */
+    setItems() {
+
+      this._noteService.setItems(this.items);
+    }
+
+    /** 
+      * Метод, который дает id каждой записке в html
+      * @param=item объект-записка
+      */
     selected(item: NoteItem) : string {
       return 'showDetail' + item.id;
     }
 
+    /** 
+      * Метод, который изменяет записку
+      * @param=item объект-записка
+      */
     onSelected(item: NoteItem) : void {
 
         if (item!=this.selectedItem)
@@ -45,6 +109,7 @@ export class NoteComponent implements OnInit{
           $('#showDetail'+item.id).slideToggle();
           this.selectedItem = this.testItem;
         }
+        this.setItems();
     }
 
      /** 
@@ -66,26 +131,26 @@ export class NoteComponent implements OnInit{
       }
       
       this.items.push(new NoteItem(id, textN, dateN, nameN));
+      this.setItems();
     }
 
+     /** 
+      * Метод, который удаляет записку
+      * @param=id номер удаляемого элемента
+      */
     removeItem(id: number): void {
       
       let newItems : NoteItem[]=[];
+      let delItem: DeleteItem;
       this.items.forEach(function(item,i, items) { 
         if (item.id != id)
           newItems.push(new NoteItem(item.id, item.textNote,  item.dateOfBegin, item.autor));
+        else 
+          delItem=(new DeleteItem(item, new Date()));
        });
+      this.itemsDelete.push(new DeleteItem(delItem.item, delItem.date));
       this.items=newItems;
+      this.setItems();
+      this.setDeleteItems();
     }
-
-     /** 
-      * Поле, которое хранит в себе массив элементов списка
-      */
-    items: NoteItem[]=[
-        { id: 1, textNote: "Hello!"},
-        { id: 2, textNote: "I am Pash"},
-        { id: 3, textNote: "Good morning:)"},
-        { id: 4, textNote: "What do you do?"}
-  
-    ];
 } 

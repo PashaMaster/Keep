@@ -2,7 +2,13 @@ import { Component, AfterViewInit  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateService} from '@ngx-translate/core';
 import { NoteComponent } from '../note/note';
+import { NoteItem } from '../item/note.item'; 
+import { Service } from '../main/service'; 
+import { Arhive } from '../arhive/arhive';
+
+
 declare var $:any;
+declare var jQuery:any;
 var settings;
 
 
@@ -10,7 +16,7 @@ var settings;
     selector: 'main-app',
     templateUrl: './src/main/menu.html',
     styleUrls: ['./src/main/menu.css'],
-    providers: []
+    providers: [Service]
 })
 
 export class AppComponent {
@@ -47,5 +53,8 @@ export class AppComponent {
           document.querySelector('.closeSettings').onclick = function() {
             settings.close();
           };
-     }
+       }
+  
+    
+
 }

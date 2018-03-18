@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var core_2 = require("@ngx-translate/core");
+var service_1 = require("../main/service");
 var settings;
 var AppComponent = /** @class */ (function () {
     /**
@@ -46,7 +47,7 @@ var AppComponent = /** @class */ (function () {
             selector: 'main-app',
             templateUrl: './src/main/menu.html',
             styleUrls: ['./src/main/menu.css'],
-            providers: []
+            providers: [service_1.Service]
         }),
         __metadata("design:paramtypes", [core_2.TranslateService])
     ], AppComponent);

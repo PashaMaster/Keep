@@ -4,10 +4,10 @@
       <a class="navbar-brand" href="#">{{'HOME.Title' | translate}}</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form navbar-right" role="search" action="" method="post">
         <div class="form-group">
-            <input type="text" placeholder="{{'HOME.Word' | translate}}">
-            <button type="submit"><span class = "glyphicon glyphicon-search"></button>
+            <input id="text-search" type="text" placeholder="{{'HOME.Word' | translate}}">
+            <button type="submit"><span class = "glyphicon glyphicon-search"></span></button>
         </div>
       </form>
     </div>
@@ -15,7 +15,7 @@
 </nav>
 <ul id="navigation">
   <li class="note"><a title="{{'HOME.Note' | translate}}" routerLink="/note"></a></li>
-  <li class="arhive"><a title="{{'HOME.Arhive' | translate}}"></a></li>
+  <li class="arhive"><a title="{{'HOME.Arhive' | translate}}" routerLink="/arhive"></a></li>
   <li class="garbage"><a title="{{'HOME.Garbage' | translate}}"></a></li>
   <li class="settings"><a id="showSettings" title="{{'HOME.Settings' | translate}}"></a></li>
   <li class="contacts"><a title="{{'HOME.Contacts' | translate}}"></a></li>

@@ -9,12 +9,16 @@ import { HttpModule } from '@angular/http';
 
 import { NoteComponent } from '../note/note';
 import { AppComponent } from './start.page';
+import { Arhive } from '../arhive/arhive';
+import { Service } from '../main/service'; 
+
+
 /** 
   * Переменная-константа, которая определяет навигацию по страницам, так же задает начальную страницу при запуске
   */
 const routers = [
 	{path: 'note', component: NoteComponent, userAsDefault: true},
-	//{path: 'notes', component: NotesComponent},
+	{path: 'arhive', component: Arhive},
   //{path: 'notedetail/:id', component: NoteDetailComponent}
 ];
 
@@ -29,7 +33,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
     declarations: [ 
         NoteComponent, 
-        AppComponent 
+        AppComponent,
+        Arhive
     ],
     imports: [ 
     	BrowserModule, 

@@ -1,0 +1,30 @@
+<div class="content">
+  <ul class="notes">
+      <li>
+          <span class="badge">
+            ID
+          </span>
+          <div class="note">
+            {{'NOTES.Note' | translate}}
+          </div>
+      </li>
+      
+      <li *ngFor="let item of itemsDelete"
+          [class.selected]="item === selectedItem"            
+      > 
+          <span class="badge">
+            {{item.date}} 
+          </span>
+          <div class="note"   (click) = "onSelected(item)">
+            {{item.}} 
+          </div>
+          
+          <div class="delete">  
+              <button class="delete-link" (click)="removeItem(item.id)">
+                  &#10008;
+              </button>
+          </div>            
+      </li>
+  </ul>
+</div>
+
