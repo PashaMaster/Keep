@@ -70,21 +70,6 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 87%;
   color: #1d1d11;
 }
-.notes .delete {
-  display: inline-block;
-  width: 4%;
-}
-.notes .delete-link {
-    display: inline-block;
-    border: none;
-    border-radius: 100%;
-    background-color: #EEE;
-    color: red;
-    text-decoration: none;
-}
-.notes .delete-link:hover {
-    background-color: #DDD;
-}
 .form-group{
   margin: 0 0 0 5em;
   display: inline-block;

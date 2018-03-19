@@ -5,7 +5,7 @@
             ID
           </span>
           <div class="note">
-            {{'NOTES.Note' | translate}}
+            {{'GARBAGE.Note' | translate}}
           </div>
       </li>
       
@@ -19,17 +19,18 @@
             {{item.item.textNote}} 
           </div>
           <div class="delete">  
-              <button class="delete-link" (click)="removeItem(item.item.id)">
+              <button class="delete-link" (click)="deleteItem(item.item.id)">
                   &#10008;
               </button>
           </div>            
           <div id="{{selected(item.item)}}" class="detail" style="display: none;">
              <form class="form-group">
-                <label>{{'NOTES.DateDel' | translate}}:</label>{{item.date | date}}<br>
-                <label>{{'NOTES.Note' | translate}}:</label>{{item.item.textNote}}<br>
-                <label>{{'NOTES.Date' | translate}}:</label>{{item.item.dateOfBegin | date}}<br>
-                <label>{{'NOTES.Name' | translate}}:</label>{{item.item.autor}}<br>
-                </form>   
+                <label>{{'GARBAGE.DateDel' | translate}}:</label>{{item.date | date}}<br>
+                <label>{{'GARBAGE.Note' | translate}}:</label>{{item.item.textNote}}<br>
+                <label>{{'GARBAGE.Date' | translate}}:</label>{{item.item.dateOfBegin | date}}<br>
+                <label>{{'GARBAGE.Name' | translate}}:</label>{{item.item.autor}}<br>
+                <button class="btn btn-default btnw del" (click)="removeItem(item.item.id)">{{'GARBAGE.Delete' | translate}}</button>
+              </form>   
           </div>
       </li>
   </ul>

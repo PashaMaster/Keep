@@ -12,31 +12,62 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var note_test_1 = require("../mock/note.test");
 var Service = /** @class */ (function () {
+    /**
+      * Конструктор, в котором получаем тестовые записки из хранилища
+      */
     function Service() {
+        /**
+          * Массив, котой хранит архивные записки
+          */
         this.itemsArhive = [];
+        /**
+          * Массив, котой хранит удаленные записки
+          */
         this.itemsDelete = [];
         this.items = note_test_1.ITEMS;
     }
+    /**
+      * Метод получения записок из сервиса
+      */
     Service.prototype.getItems = function () {
         return this.items;
     };
+    /**
+      * Метод перезаписи записок в сервис
+      */
     Service.prototype.setItems = function (items) {
         this.items = items;
     };
+    /**
+      * Метод получения архивных записок из сервиса
+      */
     Service.prototype.getItemsArhive = function () {
         return this.itemsArhive;
     };
+    /**
+      * Метод перезаписи архивных записок в сервис
+      */
     Service.prototype.setItemsArhive = function (itemsArhive) {
         this.itemsArhive = itemsArhive;
     };
+    /**
+      * Метод получения удаленных записок из сервиса
+      */
     Service.prototype.getDeleteItems = function () {
         return this.itemsDelete;
     };
+    /**
+      * Метод перезаписи удаленных записок в сервис
+      */
     Service.prototype.setDeleteItems = function (itemsDelete) {
         this.itemsDelete = itemsDelete;
     };
     Service = __decorate([
-        core_1.Injectable(),
+        core_1.Injectable()
+        /**
+          * Класс, который моделирует мок-сервис
+          */
+        ,
         __metadata("design:paramtypes", [])
     ], Service);
     return Service;

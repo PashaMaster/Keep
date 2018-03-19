@@ -38,6 +38,11 @@ export class NoteComponent implements OnInit{
     itemsDelete: DeleteItem[];
 
     /** 
+      * Массив архивных  записок
+      */
+    itemsArhive: NoteItem[];
+
+    /** 
       * Конструктор класса
       * @param=_noteService объект, которые передает мок сервис для работы
       */
@@ -56,6 +61,7 @@ export class NoteComponent implements OnInit{
   		};
       this.getItems();
       this.getDeleteItems();
+      this.getAthiveItems();
     }
 
     /** 
@@ -88,6 +94,22 @@ export class NoteComponent implements OnInit{
     setItems() {
 
       this._noteService.setItems(this.items);
+    }
+
+    /** 
+      * Метод,который получает данные архива из хранилища
+      */
+    getAthiveItems() {
+
+        this.itemsArhive = this._noteService.getItemsArhive();
+    }
+
+    /** 
+      * Метод,который записывает изменненые данные архива в хранилище
+      */
+    setAthiveItems() {
+
+        this._noteService.setItemsArhive(this.itemsArhive);
     }
 
     /** 
@@ -158,5 +180,25 @@ export class NoteComponent implements OnInit{
       this.items=newItems;
       this.setItems();
       this.setDeleteItems();
+    }
+
+    /** 
+      * Метод, который добавляет записку в архив
+      * @param=id номер добавляемого элемента
+      */
+    addArhiveItem(id: number): void {
+      
+      let newItem: NoteItem[]=[];
+      let arhItems: NoteItem;
+      this.items.forEach(function(item,i, items) { 
+        if (item.id != id)
+          newItem.push(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+        else 
+          arhItems=(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+       });
+      this.items=newItem;
+      this.itemsArhive.push(new NoteItem(arhItems.id, arhItems.textNote, arhItems.dateOfBegin, arhItems.autor));
+      this.setItems();
+      this.setAthiveItems();
     }
 } 

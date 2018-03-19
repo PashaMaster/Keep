@@ -1,0 +1,32 @@
+<div class="content">
+  <ul class="notes">
+      <li>
+          <span class="badge">
+            ID
+          </span>
+          <div class="note">
+            {{'ARHIVE.Note' | translate}}
+          </div>
+      </li>
+      
+      <li *ngFor="let item of itemsArhive"
+          [class.selected]="item === selectedItem"            
+      > 
+          <span class="badge">
+           {{item.id}} 
+          </span>
+          <div class="note"   (click) = "onSelected(item)">
+            {{item.textNote}} 
+          </div>
+          <div id="{{selected(item)}}" class="detail" style="display: none;">
+             <form class="form-group">
+                <label>{{'ARHIVE.Note' | translate}}:</label>{{item.textNote}}<br>
+                <label>{{'ARHIVE.Date' | translate}}:</label>{{item.dateOfBegin | date}}<br>
+                <label>{{'ARHIVE.Name' | translate}}:</label>{{item.autor}}<br>
+                <button class="btn btn-default btnw del" (click)="removeItem(item.id)">{{'ARHIVE.Delete' | translate}}</button>
+              </form>   
+          </div>
+      </li>
+  </ul>
+</div>
+

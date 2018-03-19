@@ -33,7 +33,7 @@
                 <input class="form-control" name="date" type="date" [(ngModel)]="item.dateOfBegin"/>
                 <label>{{'NOTES.Name' | translate}}:</label>
                 <input class="form-control" name="name" [(ngModel)]="item.autor" />
-                <button class="btn btn-default btnw arhive">{{'NOTES.AddArhive' | translate}}</button>
+                <button class="btn btn-default btnw arhive" (click)="addArhiveItem(item.id)">{{'NOTES.AddArhive' | translate}}</button>
              </form>   
           </div>
       </li>

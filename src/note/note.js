@@ -43,6 +43,7 @@ var NoteComponent = /** @class */ (function () {
         };
         this.getItems();
         this.getDeleteItems();
+        this.getAthiveItems();
     };
     /**
       * Метод,который получает данные корзины из хранилища
@@ -67,6 +68,18 @@ var NoteComponent = /** @class */ (function () {
       */
     NoteComponent.prototype.setItems = function () {
         this._noteService.setItems(this.items);
+    };
+    /**
+      * Метод,который получает данные архива из хранилища
+      */
+    NoteComponent.prototype.getAthiveItems = function () {
+        this.itemsArhive = this._noteService.getItemsArhive();
+    };
+    /**
+      * Метод,который записывает изменненые данные архива в хранилище
+      */
+    NoteComponent.prototype.setAthiveItems = function () {
+        this._noteService.setItemsArhive(this.itemsArhive);
     };
     /**
       * Метод, который дает id каждой записке в html
@@ -126,6 +139,24 @@ var NoteComponent = /** @class */ (function () {
         this.items = newItems;
         this.setItems();
         this.setDeleteItems();
+    };
+    /**
+      * Метод, который добавляет записку в архив
+      * @param=id номер добавляемого элемента
+      */
+    NoteComponent.prototype.addArhiveItem = function (id) {
+        var newItem = [];
+        var arhItems;
+        this.items.forEach(function (item, i, items) {
+            if (item.id != id)
+                newItem.push(new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+            else
+                arhItems = (new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+        });
+        this.items = newItem;
+        this.itemsArhive.push(new note_item_1.NoteItem(arhItems.id, arhItems.textNote, arhItems.dateOfBegin, arhItems.autor));
+        this.setItems();
+        this.setAthiveItems();
     };
     NoteComponent = __decorate([
         core_1.Component({

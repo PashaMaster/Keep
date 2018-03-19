@@ -123,8 +123,23 @@ export class GarbageComponent implements OnInit{
           newItem=(new NoteItem(item.item.id, item.item.textNote, item.item.dateOfBegin, item.item.autor));
        });
       this.itemsDelete=delItems;
-      this.items.push(new NoteItem(newItem.id, newItem.textNote, newItem.dateOfBegin, newItem.autor));
+      this.items.push(new NoteItem(this.items[this.items.length-1].id+1, newItem.textNote, newItem.dateOfBegin, newItem.autor));
       this.setItems();
       this.setDeleteItems();
     }
+
+    /** Метод, который удаляет записку из корзиныы
+      * @param=id номер удаляемого элемента
+      */
+    deleteItem(id: number): void {
+      
+      let delItems : DeleteItem[]=[];
+      this.itemsDelete.forEach(function(item,i, itemsDelete) { 
+        if (item.item.id != id)
+          delItems.push(new DeleteItem(item.item, new Date()));
+       });
+      this.itemsDelete=delItems;
+      this.setDeleteItems();
+    }
+
 } 

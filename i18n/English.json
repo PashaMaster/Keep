@@ -17,7 +17,7 @@
 	"NOTES":
 	{
 		"AddElement":"Add note",
-		"AddArhive":"Add to arhive",
+		"AddArhive":"Arhive",
 		"Add":"Add",
 		"Note":"Note",
 		"Number":"Number note",
@@ -25,7 +25,24 @@
 		"NoteIn":"Note",
 		"Name":"Name autor",
 		"Date":"Date",
-		"DateDel":"Date of delete",
 		"Clear":"Clear"
+	},
+	"GARBAGE":
+	{
+		"Note":"Note",
+		"Number":"Number note",
+		"NoteIn":"Note",
+		"Name":"Name autor",
+		"Date":"Date",
+		"DateDel":"Date of delete",
+		"Delete":"Reestablish"
+	},
+	"ARHIVE":
+	{
+		"Note":"Note",
+		"NoteIn":"Note",
+		"Name":"Name autor",
+		"Date":"Date",
+		"Delete":"Unarchive"
 	}
 }
