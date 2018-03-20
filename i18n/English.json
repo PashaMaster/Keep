@@ -18,7 +18,13 @@
 		"True":"True",
 		"False":"False",
 		"Close":"Close",
-		"null":""
+		"null":"",
+		"Color":"Color",
+		"Standart":"Standart",
+		"Blue":"Blue",
+		"Red":"Red",
+		"Green":"Green",
+		"Yellow":"Yellow"
 	},
 	"NOTES":
 	{

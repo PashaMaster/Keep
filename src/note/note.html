@@ -1,5 +1,4 @@
 <div class="content">
-  
   <ul class="notes">
       <li>
           <span class="badge" title="{{'NOTES.'+titleHelper(1) | translate}}">
@@ -9,9 +8,9 @@
             {{'NOTES.Note' | translate}}
           </div>
       </li>
-      
-      <li *ngFor="let item of items"
-          [class.selected]="item === selectedItem"            
+      <li id = {{getColor()}}
+          *ngFor="let item of items"
+          [class.selected]="item === selectedItem" 
       > 
           <span class="badge">
             {{item.id}} 
@@ -19,7 +18,6 @@
           <div class="note"   (click) = "onSelected(item)">
             {{item.textNote}} 
           </div>
-          
           <div class="delete" title="{{'NOTES.'+titleHelper(3) | translate}}">  
               <button class="delete-link" (click)="removeItem(item.id)">
                   &#10008;
@@ -62,3 +60,4 @@
 <div class="buttonHolder">
     <a id="showAdd" class="button tick" title="{{'NOTES.'+titleHelper(11) | translate}}"></a>
 </div>
+      

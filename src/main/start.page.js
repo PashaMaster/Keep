@@ -51,6 +51,13 @@ var AppComponent = /** @class */ (function () {
         };
     };
     /**
+      * Изменение цвета заметок
+      * @param = id цвет на который изменить
+      */
+    AppComponent.prototype.updateColor = function (id) {
+        this._noteService.setColor('color' + id);
+    };
+    /**
       * Получение подсказок
       * @param = index номер подсказки
       */
@@ -84,6 +91,9 @@ var AppComponent = /** @class */ (function () {
                     break;
                 case 9:
                     title = "Close";
+                    break;
+                case 10:
+                    title = "Color";
                     break;
                 default:
                     title = "";

@@ -21,6 +21,10 @@ var Service = /** @class */ (function () {
           */
         this.anotation = 'true';
         /**
+          * Поле, которое хранит цвет записки
+          */
+        this.color = 'color1';
+        /**
           * Массив, котой хранит архивные записки
           */
         this.itemsArhive = [];
@@ -77,6 +81,18 @@ var Service = /** @class */ (function () {
       */
     Service.prototype.getHelper = function () {
         return this.anotation;
+    };
+    /**
+      * Метод записи цвета
+      */
+    Service.prototype.setColor = function (color) {
+        this.color = color;
+    };
+    /**
+      * Метод получения цвета
+      */
+    Service.prototype.getColor = function () {
+        return this.color;
     };
     Service = __decorate([
         core_1.Injectable()

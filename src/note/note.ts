@@ -64,6 +64,14 @@ export class NoteComponent implements OnInit{
       this.getAthiveItems();
     }
 
+    /*
+     * Получение цвета из хранилища
+     */
+    getColor():string {
+     
+      return this._noteService.getColor();
+    }
+
     /**
       * Получение подсказок
       * @param = index номер подсказки

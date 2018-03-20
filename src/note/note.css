@@ -146,12 +146,9 @@ input[type=range]::-webkit-slider-runnable-track {
     display: inline-block;
     border: none;
     border-radius: 100%;
-    background-color: #EEE;
-    color: red;
+    background-color: red;
+    color: #FFF;
     text-decoration: none;
-}
-.notes .delete-link:hover {
-    background-color: #DDD;
 }
 .form-group{
   margin: 0 0 0 5em;
@@ -225,7 +222,7 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 .selected {
-	background-color: #CFD8DC !important;
+	/*background-color: #CFD8DC !important;*/
 	color: white;
 }
 
@@ -257,4 +254,20 @@ input.ng-touched.ng-valid.form-control {border:solid green 2px;}
 	float: left;
 	margin-top: 10px;
 	width: 100%;
+}
+
+#color1 {
+	background-color: #EEE;
+}
+#color2 {
+	background-color: #87CEFA;
+}
+#color3 {
+	background-color: #FF6347;
+}
+#color4 {
+	background-color: #98FB98;
+}
+#color5 {
+	background-color: #FFFACD;
 }

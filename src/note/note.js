@@ -45,6 +45,12 @@ var NoteComponent = /** @class */ (function () {
         this.getDeleteItems();
         this.getAthiveItems();
     };
+    /*
+     * Получение цвета из хранилища
+     */
+    NoteComponent.prototype.getColor = function () {
+        return this._noteService.getColor();
+    };
     /**
       * Получение подсказок
       * @param = index номер подсказки

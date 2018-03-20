@@ -51,6 +51,26 @@
               </option>
           </select>
       </div>
+      <div class="setting" title="{{'HOME.'+titleHelper(10) | translate}}">
+          <label>{{'HOME.Color' | translate}}</label>
+          <select #colorSelect (change)="updateColor(colorSelect.value)">
+              <option [value]=1>
+                  {{'HOME.Standart' | translate}}
+              </option>
+              <option [value]=2>
+                  {{'HOME.Blue' | translate}}
+              </option>
+              <option [value]=3>
+                  {{'HOME.Red' | translate}}
+              </option>
+              <option [value]=4>
+                  {{'HOME.Green' | translate}}
+              </option>
+              <option [value]=5>
+                  {{'HOME.Yellow' | translate}}
+              </option>
+          </select>
+      </div>
       <a class="close closeSettings" title="{{'HOME.'+titleHelper(9) | translate}}"></a>
   </dialog>
 <router-outlet></router-outlet>

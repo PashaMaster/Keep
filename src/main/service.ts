@@ -16,6 +16,11 @@ export class Service {
 	private anotation: string = 'true';
 	
 	/**
+	  * Поле, которое хранит цвет записки
+	  */
+	private color: string = 'color1';
+
+	/**
 	  * Массив, котой хранит записки
 	  */
 	private items: NoteItem[];
@@ -91,5 +96,19 @@ export class Service {
 	  */
 	getHelper() {		
 		return this.anotation;
+	}	
+
+	/**
+	  * Метод записи цвета 
+	  */
+	setColor(color: string) {
+		this.color=color;	
+	}
+
+	/**
+	  * Метод получения цвета
+	  */
+	getColor() {		
+		return this.color;
 	}	
 }

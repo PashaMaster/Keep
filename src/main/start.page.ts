@@ -32,6 +32,7 @@ export class AppComponent {
         let browserLang = translate.getBrowserLang();
         translate.use(browserLang.match(/English|Russian/) ? browserLang : 'English');
     }
+    
     /**
       * Метод, который выполняет скрипт для работы меню
       */
@@ -56,6 +57,15 @@ export class AppComponent {
             settings.close();
           };
        }
+
+    /**
+      * Изменение цвета заметок
+      * @param = id цвет на который изменить
+      */ 
+    updateColor(id:string):void {
+
+      this._noteService.setColor('color'+id);
+    }
 
     /**
       * Получение подсказок
@@ -93,6 +103,9 @@ export class AppComponent {
             break;
           case 9:
             title="Close";
+            break;
+          case 10:
+            title="Color";
             break;
           default:
             title="";
