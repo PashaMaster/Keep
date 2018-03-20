@@ -50,6 +50,58 @@ export class GarbageComponent implements OnInit{
       this.getDeleteItems();
     }
 
+    /**
+      * Получение подсказок
+      * @param = index номер подсказки
+      */   
+    titleHelper(index:number):string {
+      
+      if (this.getHelper()=='true')
+      {
+        let title:string;        
+        switch (index) {
+          case 1:
+            title="Number";
+            break;
+          case 2:
+            title="Note";
+            break;
+          case 3:          
+            title="DateDel";
+            break;
+          case 4:
+            title="Note";
+            break;
+          case 5:
+            title="Date";
+            break;
+          case 6:
+            title="Name";
+            break;
+          case 7:
+            title="Delete";
+            break;
+          case 8:
+            title="Remove";
+            break;
+          default:
+            title="";
+            break;
+        }
+        return title;      
+      }
+      else
+        return "null";      
+    }
+
+    /**
+      * Получение включения/выключения подсказок
+      */   
+    getHelper():string {
+      return this._noteService.getHelper();
+    }
+
+
     /** 
       * Метод,который получает данные корзины из хранилища
       */

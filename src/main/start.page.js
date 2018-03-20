@@ -18,8 +18,9 @@ var AppComponent = /** @class */ (function () {
       * Конструктор класса, в котором идет определение выбранного языка из списка и просходит перевод страницы
       * @param=translate сервис, который хранит все необходимые параметры для перевода
       */
-    function AppComponent(translate) {
+    function AppComponent(translate, _noteService) {
         this.translate = translate;
+        this._noteService = _noteService;
         /**
           * Заголовок меню
           */
@@ -50,6 +51,62 @@ var AppComponent = /** @class */ (function () {
         };
     };
     /**
+      * Получение подсказок
+      * @param = index номер подсказки
+      */
+    AppComponent.prototype.titleHelper = function (index) {
+        if (this.getHelper() == 'true') {
+            var title = void 0;
+            switch (index) {
+                case 1:
+                    title = "Search";
+                    break;
+                case 2:
+                    title = "Language";
+                    break;
+                case 3:
+                    title = "Helper";
+                    break;
+                case 4:
+                    title = "Note";
+                    break;
+                case 5:
+                    title = "Arhive";
+                    break;
+                case 6:
+                    title = "Garbage";
+                    break;
+                case 7:
+                    title = "Settings";
+                    break;
+                case 8:
+                    title = "Contacts";
+                    break;
+                case 9:
+                    title = "Close";
+                    break;
+                default:
+                    title = "";
+                    break;
+            }
+            return title;
+        }
+        else
+            return "null";
+    };
+    /**
+      * Получение включения/выключения подсказок
+      */
+    AppComponent.prototype.getHelper = function () {
+        return this._noteService.getHelper();
+    };
+    /**
+      * Включаем/выключаем подсказки
+      */
+    AppComponent.prototype.setHelper = function (flag) {
+        this._noteService.setHelper(flag);
+    };
+    /**
       * Читаем заголовок для меню
       */
     AppComponent.prototype.getTitle = function () {
@@ -69,7 +126,7 @@ var AppComponent = /** @class */ (function () {
             styleUrls: ['./src/main/menu.css'],
             providers: [service_1.Service]
         }),
-        __metadata("design:paramtypes", [core_2.TranslateService])
+        __metadata("design:paramtypes", [core_2.TranslateService, service_1.Service])
     ], AppComponent);
     return AppComponent;
 }());

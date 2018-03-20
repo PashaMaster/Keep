@@ -36,6 +36,47 @@ var Arhive = /** @class */ (function () {
         this.getAthiveItems();
     };
     /**
+      * Получение подсказок
+      * @param = index номер подсказки
+      */
+    Arhive.prototype.titleHelper = function (index) {
+        if (this.getHelper() == 'true') {
+            var title = void 0;
+            switch (index) {
+                case 1:
+                    title = "Number";
+                    break;
+                case 2:
+                    title = "Note";
+                    break;
+                case 3:
+                    title = "Note";
+                    break;
+                case 4:
+                    title = "Date";
+                    break;
+                case 5:
+                    title = "Name";
+                    break;
+                case 6:
+                    title = "Delete";
+                    break;
+                default:
+                    title = "";
+                    break;
+            }
+            return title;
+        }
+        else
+            return "null";
+    };
+    /**
+      * Получение включения/выключения подсказок
+      */
+    Arhive.prototype.getHelper = function () {
+        return this._noteService.getHelper();
+    };
+    /**
       * Метод,который получает данные архива из хранилища
       */
     Arhive.prototype.getAthiveItems = function () {

@@ -232,3 +232,11 @@ button:before {
   font-size: 16px;
   color: #F9F0DA;
 }
+
+*[tooltip]:hover:after {
+    content: attr(tooltip);
+    border: #777;
+    background-color: #aaa;
+    padding: 5px;
+}
+

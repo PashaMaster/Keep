@@ -17,6 +17,10 @@ var Service = /** @class */ (function () {
       */
     function Service() {
         /**
+          * Флаг, котрый хранит данные о включении/выключении подсказок
+          */
+        this.anotation = 'true';
+        /**
           * Массив, котой хранит архивные записки
           */
         this.itemsArhive = [];
@@ -61,6 +65,18 @@ var Service = /** @class */ (function () {
       */
     Service.prototype.setDeleteItems = function (itemsDelete) {
         this.itemsDelete = itemsDelete;
+    };
+    /**
+      * Метод записи включения/выключения подсказок
+      */
+    Service.prototype.setHelper = function (anotation) {
+        this.anotation = anotation;
+    };
+    /**
+      * Метод получения включения/выключения подсказок
+      */
+    Service.prototype.getHelper = function () {
+        return this.anotation;
     };
     Service = __decorate([
         core_1.Injectable()

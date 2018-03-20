@@ -25,7 +25,7 @@ export class AppComponent {
       * Конструктор класса, в котором идет определение выбранного языка из списка и просходит перевод страницы
       * @param=translate сервис, который хранит все необходимые параметры для перевода
       */ 
-    constructor(private translate: TranslateService) {
+    constructor(private translate: TranslateService, private _noteService: Service) {
        
         translate.addLangs(["English", "Russian"]);
         translate.setDefaultLang('English');
@@ -57,6 +57,69 @@ export class AppComponent {
           };
        }
 
+    /**
+      * Получение подсказок
+      * @param = index номер подсказки
+      */   
+    titleHelper(index:number):string {
+      
+      if (this.getHelper()=='true')
+      {
+        let title:string;        
+        switch (index) {
+          case 1:
+            title="Search";
+            break;
+          case 2:
+            title="Language";
+            break;
+          case 3:
+            title="Helper";
+            break;
+          case 4:
+            title="Note";
+            break;
+          case 5:
+            title="Arhive";
+            break;
+          case 6:
+            title="Garbage";
+            break;
+          case 7:
+            title="Settings";
+            break;
+          case 8:
+            title="Contacts";
+            break;
+          case 9:
+            title="Close";
+            break;
+          default:
+            title="";
+            break;
+        }
+        return title;      
+      }
+      else
+        return "null";      
+
+    }
+
+    /**
+      * Получение включения/выключения подсказок
+      */   
+    getHelper():string {
+      return this._noteService.getHelper();
+    }
+
+    /**
+      * Включаем/выключаем подсказки
+      */   
+    setHelper(flag:string) {
+
+      this._noteService.setHelper(flag);
+    }
+
     /** 
       * Заголовок меню
       */
@@ -78,5 +141,4 @@ export class AppComponent {
       
       this.title = title;
     }
-
 }

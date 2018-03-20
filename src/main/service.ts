@@ -9,21 +9,26 @@ import { DeleteItem } from '../item/delete.item'; 
   * Класс, который моделирует мок-сервис
   */
 export class Service {
+
+	/**
+	  * Флаг, котрый хранит данные о включении/выключении подсказок
+	  */
+	private anotation: string = 'true';
 	
 	/**
 	  * Массив, котой хранит записки
 	  */
-	items: NoteItem[];
+	private items: NoteItem[];
 
 	/**
 	  * Массив, котой хранит архивные записки
 	  */
-	itemsArhive: NoteItem[] = [];
+	private itemsArhive: NoteItem[] = [];
 
 	/**
 	  * Массив, котой хранит удаленные записки
 	  */
-	itemsDelete: DeleteItem[] = [];
+	private itemsDelete: DeleteItem[] = [];
 
 	/**
 	  * Конструктор, в котором получаем тестовые записки из хранилища
@@ -73,4 +78,18 @@ export class Service {
 	setDeleteItems(itemsDelete: DeleteItem[]){
 		this.itemsDelete=itemsDelete;
 	}
+
+	/**
+	  * Метод записи включения/выключения подсказок 
+	  */
+	setHelper(anotation: string) {
+		this.anotation=anotation;	
+	}
+
+	/**
+	  * Метод получения включения/выключения подсказок
+	  */
+	getHelper() {		
+		return this.anotation;
+	}	
 }

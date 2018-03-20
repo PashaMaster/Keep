@@ -5,7 +5,7 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-right" role="search" action="" method="post">
-        <div class="form-group">
+        <div class="form-group" title="{{'HOME.'+titleHelper(1) | translate}}">
             <input id="text-search" type="text" placeholder="{{'HOME.Word' | translate}}">
             <button type="submit"><span class = "glyphicon glyphicon-search"></span></button>
         </div>
@@ -14,15 +14,25 @@
   </div>
 </nav>
 <ul id="navigation">
-  <li class="note"><a title="{{'HOME.Note' | translate}}" (click) = "setTitle('TitleNotes')" routerLink="/note"></a></li>
-  <li class="arhive"><a title="{{'HOME.Arhive' | translate}}" (click) = "setTitle('TitleArhive')" routerLink="/arhive"></a></li>
-  <li class="garbage"><a title="{{'HOME.Garbage' | translate}}"  (click) = "setTitle('TitleGarbage')" routerLink="/garbage"></a></li>
-  <li class="settings"><a id="showSettings" title="{{'HOME.Settings' | translate}}" (click) = "setTitle('TitleSettings')"></a></li>
-  <li class="contacts"><a title="{{'HOME.Contacts' | translate}}"></a></li>
+  <li class="note">
+    <a title="{{'HOME.'+titleHelper(4) | translate}}" (click) = "setTitle('TitleNotes')" routerLink="/note"></a>
+  </li>
+  <li class="arhive">
+    <a title="{{'HOME.'+titleHelper(5) | translate}}" (click) = "setTitle('TitleArhive')" routerLink="/arhive"></a>
+  </li>
+  <li class="garbage">
+    <a title="{{'HOME.'+titleHelper(6) | translate}}"  (click) = "setTitle('TitleGarbage')" routerLink="/garbage"></a>
+  </li>
+  <li class="settings">
+    <a id="showSettings" title="{{'HOME.'+titleHelper(7) | translate}}" (click) = "setTitle('TitleSettings')"></a>
+  </li>
+  <li class="contacts">
+    <a title="{{'HOME.'+titleHelper(8) | translate}}"></a>
+  </li>
 </ul>
 <dialog class="modal_form">
       <legend>{{'HOME.Settings' | translate}}:</legend>
-      <div class="setting">
+      <div class="setting" title="{{'HOME.'+titleHelper(2) | translate}}">
           <label>{{'HOME.Language' | translate}}</label>
           <select #langSelect (change)="translate.use(langSelect.value)">
               <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
@@ -30,6 +40,17 @@
               </option>
           </select>
       </div>
-      <a class="close closeSettings" title="{{'HOME.Close' | translate}}"></a>
+      <div class="setting" title="{{'HOME.'+titleHelper(3) | translate}}">
+          <label>{{'HOME.Helper' | translate}}</label>
+          <select #helpSelect (change)="setHelper(helpSelect.value)">
+              <option [value]="true">
+                  {{'HOME.True' | translate}}
+              </option>
+              <option [value]="false">
+                  {{'HOME.False' | translate}}
+              </option>
+          </select>
+      </div>
+      <a class="close closeSettings" title="{{'HOME.'+titleHelper(9) | translate}}"></a>
   </dialog>
 <router-outlet></router-outlet>

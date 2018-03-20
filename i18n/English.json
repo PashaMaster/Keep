@@ -12,7 +12,13 @@
 		"Arhive":"Arhive",
 		"Garbage":"Garbage",
 		"Settings":"Settings",
-		"Contacts":"Contacts"
+		"Contacts":"Contacts",
+		"Search":"Search",
+		"Helper":"Helper",
+		"True":"True",
+		"False":"False",
+		"Close":"Close",
+		"null":""
 	},
 	"NOTES":
 	{
@@ -25,7 +31,9 @@
 		"NoteIn":"Note",
 		"Name":"Name autor",
 		"Date":"Date",
-		"Clear":"Clear"
+		"Close":"Close",
+		"Clear":"Clear",
+		"null":""
 	},
 	"GARBAGE":
 	{
@@ -35,14 +43,18 @@
 		"Name":"Name autor",
 		"Date":"Date",
 		"DateDel":"Date of delete",
-		"Delete":"Reestablish"
+		"Delete":"Reestablish",
+		"Remove":"Remove",
+		"null":""
 	},
 	"ARHIVE":
 	{
+		"Number":"Number note",
 		"Note":"Note",
 		"NoteIn":"Note",
 		"Name":"Name autor",
 		"Date":"Date",
-		"Delete":"Unarchive"
+		"Delete":"Unarchive",
+		"null":""
 	}
 }

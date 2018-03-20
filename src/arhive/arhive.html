@@ -1,10 +1,10 @@
 <div class="content">
   <ul class="notes">
       <li>
-          <span class="badge">
+          <span class="badge" title="{{'ARHIVE.'+titleHelper(1) | translate}}">
             ID
           </span>
-          <div class="note">
+          <div class="note" title="{{'ARHIVE.'+titleHelper(2) | translate}}">
             {{'ARHIVE.Note' | translate}}
           </div>
       </li>
@@ -20,10 +20,10 @@
           </div>
           <div id="{{selected(item)}}" class="detail" style="display: none;">
              <form class="form-group">
-                <label>{{'ARHIVE.Note' | translate}}:</label>{{item.textNote}}<br>
-                <label>{{'ARHIVE.Date' | translate}}:</label>{{item.dateOfBegin | date}}<br>
-                <label>{{'ARHIVE.Name' | translate}}:</label>{{item.autor}}<br>
-                <button class="btn btn-default btnw del" (click)="removeItem(item.id)">{{'ARHIVE.Delete' | translate}}</button>
+                <label title="{{'ARHIVE.'+titleHelper(3) | translate}}">{{'ARHIVE.Note' | translate}}:</label>{{item.textNote}}<br>
+                <label title="{{'ARHIVE.'+titleHelper(4) | translate}}">{{'ARHIVE.Date' | translate}}:</label>{{item.dateOfBegin | date}}<br>
+                <label title="{{'ARHIVE.'+titleHelper(5) | translate}}">{{'ARHIVE.Name' | translate}}:</label>{{item.autor}}<br>
+                <button class="btn btn-default btnw del" (click)="removeItem(item.id)" title="{{'ARHIVE.'+titleHelper(6) | translate}}">{{'ARHIVE.Delete' | translate}}</button>
               </form>   
           </div>
       </li>

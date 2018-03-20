@@ -1,10 +1,10 @@
 <div class="content">
   <ul class="notes">
       <li>
-          <span class="badge">
+          <span class="badge" title="{{'GARBAGE.'+titleHelper(1) | translate}}">
             ID
           </span>
-          <div class="note">
+          <div class="note" title="{{'GARBAGE.'+titleHelper(2) | translate}}">
             {{'GARBAGE.Note' | translate}}
           </div>
       </li>
@@ -18,18 +18,18 @@
           <div class="note"   (click) = "onSelected(item.item)">
             {{item.item.textNote}} 
           </div>
-          <div class="delete">  
+          <div class="delete" title="{{'GARBAGE.'+titleHelper(8) | translate}}">  
               <button class="delete-link" (click)="deleteItem(item.item.id)">
                   &#10008;
               </button>
           </div>            
           <div id="{{selected(item.item)}}" class="detail" style="display: none;">
              <form class="form-group">
-                <label>{{'GARBAGE.DateDel' | translate}}:</label>{{item.date | date}}<br>
-                <label>{{'GARBAGE.Note' | translate}}:</label>{{item.item.textNote}}<br>
-                <label>{{'GARBAGE.Date' | translate}}:</label>{{item.item.dateOfBegin | date}}<br>
-                <label>{{'GARBAGE.Name' | translate}}:</label>{{item.item.autor}}<br>
-                <button class="btn btn-default btnw del" (click)="removeItem(item.item.id)">{{'GARBAGE.Delete' | translate}}</button>
+                <label title="{{'GARBAGE.'+titleHelper(3) | translate}}">{{'GARBAGE.DateDel' | translate}}:</label>{{item.date | date}}<br>
+                <label title="{{'GARBAGE.'+titleHelper(4) | translate}}">{{'GARBAGE.Note' | translate}}:</label>{{item.item.textNote}}<br>
+                <label title="{{'GARBAGE.'+titleHelper(5) | translate}}">{{'GARBAGE.Date' | translate}}:</label>{{item.item.dateOfBegin | date}}<br>
+                <label title="{{'GARBAGE.'+titleHelper(6) | translate}}">{{'GARBAGE.Name' | translate}}:</label>{{item.item.autor}}<br>
+                <button class="btn btn-default btnw del" (click)="removeItem(item.item.id)" title="{{'GARBAGE.'+titleHelper(7) | translate}}">{{'GARBAGE.Delete' | translate}}</button>
               </form>   
           </div>
       </li>
