@@ -197,6 +197,10 @@ var NoteComponent = /** @class */ (function () {
             else
                 delItem = (new delete_item_1.DeleteItem(item, new Date()));
         });
+        if (this.itemsDelete.length == 0)
+            delItem.item.id = 1;
+        else
+            delItem.item.id = this.itemsDelete[this.itemsDelete.length - 1].item.id + 1;
         this.itemsDelete.push(new delete_item_1.DeleteItem(delItem.item, delItem.date));
         this.items = newItems;
         this.setItems();

@@ -24,7 +24,9 @@
 		"Blue":"Blue",
 		"Red":"Red",
 		"Green":"Green",
-		"Yellow":"Yellow"
+		"Yellow":"Yellow",
+		"Clear":"Clear",
+		"AddDiagram":"Add diagram"
 	},
 	"NOTES":
 	{

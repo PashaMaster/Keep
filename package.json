@@ -19,12 +19,14 @@
     "@angular/router": "~5.0.0",
     "angular-in-memory-web-api": "~0.3.0",
     "core-js": "^2.4.1",
+    "d3": "^4.13.0",
     "jquery": "^3.3.1",
     "rxjs": "^5.5.2",
     "systemjs": "0.19.40",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
+    "@types/d3": "^5.0.0",
     "@types/node": "^6.0.46",
     "concurrently": "^3.2.0",
     "lite-server": "^2.2.2",

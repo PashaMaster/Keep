@@ -142,7 +142,12 @@ var GarbageComponent = /** @class */ (function () {
                 newItem = (new note_item_1.NoteItem(item.item.id, item.item.textNote, item.item.dateOfBegin, item.item.autor));
         });
         this.itemsDelete = delItems;
-        this.items.push(new note_item_1.NoteItem(this.items[this.items.length - 1].id + 1, newItem.textNote, newItem.dateOfBegin, newItem.autor));
+        var index;
+        if (this.items.length == 0)
+            index = 1;
+        else
+            index = this.items[this.items.length - 1].id + 1;
+        this.items.push(new note_item_1.NoteItem(index, newItem.textNote, newItem.dateOfBegin, newItem.autor));
         this.setItems();
         this.setDeleteItems();
     };

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var core_2 = require("@ngx-translate/core");
 var service_1 = require("../main/service");
+var svg;
 var settings;
 var AppComponent = /** @class */ (function () {
     /**
@@ -31,6 +32,32 @@ var AppComponent = /** @class */ (function () {
         translate.use(browserLang.match(/English|Russian/) ? browserLang : 'English');
     }
     /**
+      * Метод получения данных для диаграммы
+      */
+    AppComponent.prototype.getData = function () {
+        var count = this._noteService.getItemsArhive().length +
+            this._noteService.getDeleteItems().length +
+            this._noteService.getItems().length;
+        if (this._noteService.getItemsArhive().length / count * 100 == 0) {
+            this.countArhive = '';
+        }
+        else {
+            this.countArhive = (this._noteService.getItemsArhive().length / count * 100).toFixed(2);
+        }
+        if (this._noteService.getDeleteItems().length / count * 100 == 0) {
+            this.countGarbage = '';
+        }
+        else {
+            this.countGarbage = (this._noteService.getDeleteItems().length / count * 100).toFixed(2);
+        }
+        if (this._noteService.getItems().length / count * 100 == 0) {
+            this.countNote = '';
+        }
+        else {
+            this.countNote = (this._noteService.getItems().length / count * 100).toFixed(2);
+        }
+    };
+    /**
       * Метод, который выполняет скрипт для работы меню
       */
     AppComponent.prototype.ngAfterViewInit = function () {
@@ -49,6 +76,81 @@ var AppComponent = /** @class */ (function () {
         document.querySelector('.closeSettings').onclick = function () {
             settings.close();
         };
+    };
+    /**
+      * Метод очистки диаграммы
+      */
+    AppComponent.prototype.clearSVG = function () {
+        d3.selectAll("svg > *").remove();
+    };
+    /**
+      * Метод построения  диаграммы
+      */
+    AppComponent.prototype.getDiagram = function (noteName, arhiveName, garbageName) {
+        this.getData();
+        this.clearSVG();
+        var height = 300, width = 360, margin = 30, data = [
+            { browser: noteName, rate: this.countNote },
+            { browser: arhiveName, rate: this.countArhive },
+            { browser: garbageName, rate: this.countGarbage },
+        ];
+        // функция для получения цветов
+        var color = d3.scale.category10();
+        // задаем радиус
+        var radius = Math.min((width - 60) - 2 * margin, height - 2 * margin) / 2;
+        // создаем элемент арки с радиусом
+        var arc = d3.svg.arc()
+            .outerRadius(radius)
+            .innerRadius(0);
+        var pie = d3.layout.pie()
+            .sort(null)
+            .value(function (d) { return d.rate; });
+        svg = d3.select("body").select("svg")
+            .attr("class", "axis")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + ((width - 60) / 2) + "," + (height / 2) + ")");
+        var g = svg.selectAll(".arc")
+            .data(pie(data))
+            .enter().append("g")
+            .attr("class", "arc");
+        g.append("path")
+            .attr("d", arc)
+            .style("fill", function (d) { return color(d.data.browser); });
+        g.append("text")
+            .attr("transform", function (d) {
+            return "translate(" + arc.centroid(d) + ")";
+        })
+            .style("text-anchor", "middle")
+            .text(function (d) {
+            if (d.data.rate == 0)
+                return d.data.rate;
+            else
+                return d.data.rate + "%";
+        });
+        var legendTable = d3.select("svg").append("g")
+            .attr("transform", "translate(0, " + margin + ")")
+            .attr("class", "legendTable");
+        var legend = legendTable.selectAll(".legend")
+            .data(pie(data))
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", function (d, i) {
+            return "translate(0, " + i * 20 + ")";
+        });
+        legend.append("rect")
+            .attr("x", width - 10)
+            .attr("y", 4)
+            .attr("width", 10)
+            .attr("height", 10)
+            .style("fill", function (d) { return color(d.data.browser); });
+        legend.append("text")
+            .attr("x", width - 15)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "end")
+            .text(function (d) { return d.data.browser; });
     };
     /**
       * Изменение цвета заметок

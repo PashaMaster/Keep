@@ -175,7 +175,12 @@ export class GarbageComponent implements OnInit{
           newItem=(new NoteItem(item.item.id, item.item.textNote, item.item.dateOfBegin, item.item.autor));
        });
       this.itemsDelete=delItems;
-      this.items.push(new NoteItem(this.items[this.items.length-1].id+1, newItem.textNote, newItem.dateOfBegin, newItem.autor));
+      let index:number;
+      if (this.items.length==0)
+        index=1;
+      else
+        index=this.items[this.items.length-1].id+1;
+      this.items.push(new NoteItem(index, newItem.textNote, newItem.dateOfBegin, newItem.autor));
       this.setItems();
       this.setDeleteItems();
     }
