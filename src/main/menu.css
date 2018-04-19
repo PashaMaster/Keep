@@ -109,11 +109,11 @@ ul#navigation .contacts a     {
 
 .modal_form {
 	width: 50%; 
-	height: 85%; 
-	border: 1px #000 solid;
-	background: #fff;
+	height: 90%; 
+	border: 2px #454545 solid;
+	background: #f8f8f8;
 	position: fixed; 
-	top: 35%; 
+	top: 25%; 
 	left: 35%; 
 	margin-top: -150px;
 	margin-left: -150px; 
@@ -313,12 +313,12 @@ ul#navigation .contacts a     {
   padding: 0.5em 0.8em 0.5em 0.8em; 
 }
 .diagram a.button {
-  margin: 5px;
   margin-left: 5px;
   font-family: Candara, Tahoma, Geneva, sans-serif;
   font-size: 1.1em; 
   font-weight: 500;
   background: #454545;
+  border-color: #454545;
   display: inline-block;
   color: white;
   text-decoration: none;
@@ -340,4 +340,16 @@ ul#navigation .contacts a     {
 	border-color: #454545;
 	color: #454545;
 	font-weight: 600;
+}
+
+select {
+  background: linear-gradient(top, #c8ffc4, #afb8ff); 
+  border: 4px solid #454545; 
+  border-radius: 3px; 
+  box-shadow: 0 0 5px #454545; 
+  color: #111; 
+  font-size: 15px; 
+  padding: 10px; 
+  width: 200px;
+  margin-bottom: 10px;
 }
