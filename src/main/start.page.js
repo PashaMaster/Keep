@@ -160,53 +160,6 @@ var AppComponent = /** @class */ (function () {
         this._noteService.setColor('color' + id);
     };
     /**
-      * Получение подсказок
-      * @param = index номер подсказки
-      */
-    AppComponent.prototype.titleHelper = function (index) {
-        if (this.getHelper() == 'true') {
-            var title = void 0;
-            switch (index) {
-                case 1:
-                    title = "Search";
-                    break;
-                case 2:
-                    title = "Language";
-                    break;
-                case 3:
-                    title = "Helper";
-                    break;
-                case 4:
-                    title = "Note";
-                    break;
-                case 5:
-                    title = "Arhive";
-                    break;
-                case 6:
-                    title = "Garbage";
-                    break;
-                case 7:
-                    title = "Settings";
-                    break;
-                case 8:
-                    title = "Contacts";
-                    break;
-                case 9:
-                    title = "Close";
-                    break;
-                case 10:
-                    title = "Color";
-                    break;
-                default:
-                    title = "";
-                    break;
-            }
-            return title;
-        }
-        else
-            return "null";
-    };
-    /**
       * Получение включения/выключения подсказок
       */
     AppComponent.prototype.getHelper = function () {
@@ -217,6 +170,10 @@ var AppComponent = /** @class */ (function () {
       */
     AppComponent.prototype.setHelper = function (flag) {
         this._noteService.setHelper(flag);
+        if (this.getHelper() == 'true')
+            $(".helper span").css({ "display": "block" });
+        else
+            $(".helper span").css({ "display": "none" });
     };
     /**
       * Читаем заголовок для меню

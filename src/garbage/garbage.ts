@@ -9,7 +9,8 @@ declare var $ :any;
 @Component({
     selector: 'garbage-app',
     templateUrl: './src/garbage/garbage.html',
-    styleUrls: ['./src/garbage/garbage.css'],
+    styleUrls: ['./src/garbage/garbage.css',
+                './src/main/menu.css'],
     providers: []
 })
 
@@ -48,59 +49,19 @@ export class GarbageComponent implements OnInit{
       
       this.getItems();
       this.getDeleteItems();
+      this.getHelper();
     }
 
     /**
-      * Получение подсказок
-      * @param = index номер подсказки
-      */   
-    titleHelper(index:number):string {
-      
-      if (this.getHelper()=='true')
-      {
-        let title:string;        
-        switch (index) {
-          case 1:
-            title="Number";
-            break;
-          case 2:
-            title="Note";
-            break;
-          case 3:          
-            title="DateDel";
-            break;
-          case 4:
-            title="Note";
-            break;
-          case 5:
-            title="Date";
-            break;
-          case 6:
-            title="Name";
-            break;
-          case 7:
-            title="Delete";
-            break;
-          case 8:
-            title="Remove";
-            break;
-          default:
-            title="";
-            break;
-        }
-        return title;      
-      }
+      * Метод, который включает/выключает подсказки на странице
+      */
+    getHelper() {
+
+      if (this._noteService.getHelper()=='true')
+        $(".helper span").css({"display": "block"});
       else
-        return "null";      
+        $(".helper span").css({"display": "none"});
     }
-
-    /**
-      * Получение включения/выключения подсказок
-      */   
-    getHelper():string {
-      return this._noteService.getHelper();
-    }
-
 
     /** 
       * Метод,который получает данные корзины из хранилища

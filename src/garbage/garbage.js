@@ -35,53 +35,16 @@ var GarbageComponent = /** @class */ (function () {
     GarbageComponent.prototype.ngOnInit = function () {
         this.getItems();
         this.getDeleteItems();
+        this.getHelper();
     };
     /**
-      * Получение подсказок
-      * @param = index номер подсказки
-      */
-    GarbageComponent.prototype.titleHelper = function (index) {
-        if (this.getHelper() == 'true') {
-            var title = void 0;
-            switch (index) {
-                case 1:
-                    title = "Number";
-                    break;
-                case 2:
-                    title = "Note";
-                    break;
-                case 3:
-                    title = "DateDel";
-                    break;
-                case 4:
-                    title = "Note";
-                    break;
-                case 5:
-                    title = "Date";
-                    break;
-                case 6:
-                    title = "Name";
-                    break;
-                case 7:
-                    title = "Delete";
-                    break;
-                case 8:
-                    title = "Remove";
-                    break;
-                default:
-                    title = "";
-                    break;
-            }
-            return title;
-        }
-        else
-            return "null";
-    };
-    /**
-      * Получение включения/выключения подсказок
+      * Метод, который включает/выключает подсказки на странице
       */
     GarbageComponent.prototype.getHelper = function () {
-        return this._noteService.getHelper();
+        if (this._noteService.getHelper() == 'true')
+            $(".helper span").css({ "display": "block" });
+        else
+            $(".helper span").css({ "display": "none" });
     };
     /**
       * Метод,который получает данные корзины из хранилища
@@ -167,7 +130,8 @@ var GarbageComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'garbage-app',
             templateUrl: './src/garbage/garbage.html',
-            styleUrls: ['./src/garbage/garbage.css'],
+            styleUrls: ['./src/garbage/garbage.css',
+                './src/main/menu.css'],
             providers: []
         }),
         __metadata("design:paramtypes", [service_1.Service])

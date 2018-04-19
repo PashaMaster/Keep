@@ -1,10 +1,13 @@
 <div class="content">
   <ul class="notes">
       <li>
-          <span class="badge" title="{{'ARHIVE.'+titleHelper(1) | translate}}">
+          <span class="badge">
             ID
           </span>
-          <div class="note" title="{{'ARHIVE.'+titleHelper(2) | translate}}">
+          <div class="note helper">
+            <span class="custom classic">
+              <em>{{'ARHIVE.Note' | translate}}</em>
+            </span>
             {{'ARHIVE.Note' | translate}}
           </div>
       </li>
@@ -20,10 +23,30 @@
           </div>
           <div id="{{selected(item)}}" class="detail" style="display: none;">
              <form class="form-group">
-                <label title="{{'ARHIVE.'+titleHelper(3) | translate}}">{{'ARHIVE.Note' | translate}}:</label>{{item.textNote}}<br>
-                <label title="{{'ARHIVE.'+titleHelper(4) | translate}}">{{'ARHIVE.Date' | translate}}:</label>{{item.dateOfBegin | date}}<br>
-                <label title="{{'ARHIVE.'+titleHelper(5) | translate}}">{{'ARHIVE.Name' | translate}}:</label>{{item.autor}}<br>
-                <button class="btn btn-default btnw del" (click)="removeItem(item.id)" title="{{'ARHIVE.'+titleHelper(6) | translate}}">{{'ARHIVE.Delete' | translate}}</button>
+                <label class="helper" >
+                  <span class="custom classic">
+                    <em>{{'ARHIVE.Note' | translate}}</em>
+                  </span>
+                  {{'ARHIVE.Note' | translate}}:
+                </label>{{item.textNote}}<br>
+                <label class="helper">
+                  <span class="custom classic">
+                    <em>{{'ARHIVE.Date' | translate}}</em>
+                  </span>
+                  {{'ARHIVE.Date' | translate}}:
+                </label>{{item.dateOfBegin | date}}<br>
+                <label class="helper">
+                  <span class="custom classic">
+                    <em>{{'ARHIVE.Name' | translate}}</em>
+                  </span>
+                  {{'ARHIVE.Name' | translate}}:
+                </label>{{item.autor}}<br>
+                <button class="btn btn-default btnw del helper" (click)="removeItem(item.id)" >
+                  <span class="custom classic">
+                    <em>{{'ARHIVE.Delete' | translate}}</em>
+                  </span>
+                  {{'ARHIVE.Delete' | translate}}
+                </button>
               </form>   
           </div>
       </li>

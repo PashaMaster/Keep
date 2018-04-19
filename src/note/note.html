@@ -1,10 +1,13 @@
 <div class="content">
   <ul class="notes">
       <li>
-          <span class="badge" title="{{'NOTES.'+titleHelper(1) | translate}}">
+          <span class="badge">
             ID
           </span>
-          <div class="note" title="{{'NOTES.'+titleHelper(2) | translate}}">
+          <div class="note helper">
+            <span class="custom classic">
+              <em>{{'NOTES.Note' | translate}}</em>
+            </span>
             {{'NOTES.Note' | translate}}
           </div>
       </li>
@@ -18,20 +21,43 @@
           <div class="note"   (click) = "onSelected(item)">
             {{item.textNote}} 
           </div>
-          <div class="delete" title="{{'NOTES.'+titleHelper(3) | translate}}">  
+          <div class="delete helper">  
+              <span class="custom classic">
+                <em>{{'NOTES.Remove' | translate}}</em>
+              </span>
               <button class="delete-link" (click)="removeItem(item.id)">
                   &#10008;
               </button>
           </div>            
           <div id="{{selected(item)}}" class="detail" style="display: none;">
              <form class="form-group">
-                <label title="{{'NOTES.'+titleHelper(4) | translate}}">{{'NOTES.Note' | translate}}:</label>
+                <label class="helper">
+                  <span class="custom classic">
+                    <em>{{'NOTES.Note' | translate}}</em>
+                  </span>
+                  {{'NOTES.Note' | translate}}:
+                </label>
                 <input class="form-control" name="text" [(ngModel)]="item.textNote">
-                <label title="{{'NOTES.'+titleHelper(5) | translate}}">{{'NOTES.Date' | translate}}:</label>
+                <label class="helper">
+                  <span class="custom classic">
+                    <em>{{'NOTES.Date' | translate}}</em>
+                  </span>
+                  {{'NOTES.Date' | translate}}:
+                </label>
                 <input class="form-control" name="date" type="date" [(ngModel)]="item.dateOfBegin"/>
-                <label title="{{'NOTES.'+titleHelper(6) | translate}}">{{'NOTES.Name' | translate}}:</label>
+                <label class="helper">
+                  <span class="custom classic">
+                    <em>{{'NOTES.Name' | translate}}</em>
+                  </span>
+                  {{'NOTES.Name' | translate}}:
+                </label>
                 <input class="form-control" name="name" [(ngModel)]="item.autor" />
-                <button class="btn btn-default btnw arhive" (click)="addArhiveItem(item.id)" title="{{'NOTES.'+titleHelper(7) | translate}}">{{'NOTES.AddArhive' | translate}}</button>
+                <button class="btn btn-default btnw arhive helper" (click)="addArhiveItem(item.id)">
+                  <span class="custom classic">
+                    <em>{{'NOTES.AddArhive' | translate}}</em>
+                  </span>
+                  {{'NOTES.AddArhive' | translate}}
+                </button>
              </form>   
           </div>
       </li>
@@ -46,18 +72,28 @@
               placeholder = "{{'NOTES.Date' | translate}}" />
             <input class="form-control addinput" name="name" [(ngModel)]="nameN" 
               placeholder = "{{'NOTES.Name' | translate}}" />
-            <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw addbutton" (click)="addItem(textN, dateN, nameN)" title="{{'NOTES.'+titleHelper(8) | translate}}">
+            <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw addbutton helper" (click)="addItem(textN, dateN, nameN)">
+                <span class="custom classic">
+                  <em>{{'NOTES.Add' | translate}}</em>
+                </span> 
                 {{'NOTES.Add' | translate}}
              </button>
-             <button type="reset" class="btn btn-default btnw addbutton" title="{{'NOTES.'+titleHelper(9) | translate}}">
+             <button type="reset" class="btn btn-default btnw addbutton helper">
+                <span class="custom classic">
+                  <em>{{'NOTES.Clear' | translate}}</em>
+                </span> 
                 {{'NOTES.Clear' | translate}}
              </button>
           </form>                        
       </div>
-     <a class="close closeAdd" title="{{'NOTES.'+titleHelper(10) | translate}}"></a>
+     <a class="close closeAdd"></a>
   </dialog>
 </div>
 <div class="buttonHolder">
-    <a id="showAdd" class="button tick" title="{{'NOTES.'+titleHelper(11) | translate}}"></a>
+    <a id="showAdd" class="button tick helper">
+      <span class="custom classic">
+        <em>{{'NOTES.Add' | translate}}</em>
+      </span>      
+    </a>
 </div>
       

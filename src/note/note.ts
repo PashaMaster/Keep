@@ -11,7 +11,8 @@ var add, detail;
 @Component({
     selector: 'note-app',
     templateUrl: './src/note/note.html',
-    styleUrls: ['./src/note/note.css'],
+    styleUrls: ['./src/note/note.css',
+                './src/main/menu.css'],
     providers: []
 })
 
@@ -62,6 +63,18 @@ export class NoteComponent implements OnInit{
       this.getItems();
       this.getDeleteItems();
       this.getAthiveItems();
+      this.getHelper(); 
+    }
+
+     /**
+      * Метод, который включает/выключает подсказки на странице
+      */
+     getHelper() {
+
+      if (this._noteService.getHelper()=='true')
+        $(".helper span").css({"display": "block"});
+      else
+        $(".helper span").css({"display": "none"});
     }
 
     /*
@@ -70,67 +83,6 @@ export class NoteComponent implements OnInit{
     getColor():string {
      
       return this._noteService.getColor();
-    }
-
-    /**
-      * Получение подсказок
-      * @param = index номер подсказки
-      */   
-    titleHelper(index:number):string {
-      
-      if (this.getHelper()=='true')
-      {
-        let title:string;        
-        switch (index) {
-          case 1:
-            title="Number";
-            break;
-          case 2:
-            title="Note";
-            break;
-          case 3:
-            title="Remove";
-            break;
-          case 4:
-            title="Note";
-            break;
-          case 5:
-            title="Date";
-            break;
-          case 6:
-            title="Name";
-            break;
-          case 7:
-            title="AddArhive";
-            break;
-          case 8:
-            title="Add";
-            break;
-          case 9:
-            title="Clear";
-            break;
-          case 10:
-            title="Close";
-            break;  
-          case 11:
-            title="Add";
-            break;
-          default:
-            title="";
-            break;
-        }
-        return title;      
-      }
-      else
-        return "null";      
-
-    }
-
-    /**
-      * Получение включения/выключения подсказок
-      */   
-    getHelper():string {
-      return this._noteService.getHelper();
     }
 
     /** 

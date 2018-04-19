@@ -70,6 +70,7 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 87%;
   color: #1d1d11;
 }
+
 .form-group{
   margin: 0 0 0 5em;
   display: inline-block;

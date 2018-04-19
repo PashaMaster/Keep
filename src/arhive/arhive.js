@@ -34,47 +34,16 @@ var Arhive = /** @class */ (function () {
     Arhive.prototype.ngOnInit = function () {
         this.getItems();
         this.getAthiveItems();
+        this.getHelper();
     };
     /**
-      * Получение подсказок
-      * @param = index номер подсказки
-      */
-    Arhive.prototype.titleHelper = function (index) {
-        if (this.getHelper() == 'true') {
-            var title = void 0;
-            switch (index) {
-                case 1:
-                    title = "Number";
-                    break;
-                case 2:
-                    title = "Note";
-                    break;
-                case 3:
-                    title = "Note";
-                    break;
-                case 4:
-                    title = "Date";
-                    break;
-                case 5:
-                    title = "Name";
-                    break;
-                case 6:
-                    title = "Delete";
-                    break;
-                default:
-                    title = "";
-                    break;
-            }
-            return title;
-        }
-        else
-            return "null";
-    };
-    /**
-      * Получение включения/выключения подсказок
+      * Метод, который включает/выключает подсказки на странице
       */
     Arhive.prototype.getHelper = function () {
-        return this._noteService.getHelper();
+        if (this._noteService.getHelper() == 'true')
+            $(".helper span").css({ "display": "block" });
+        else
+            $(".helper span").css({ "display": "none" });
     };
     /**
       * Метод,который получает данные архива из хранилища
@@ -143,7 +112,8 @@ var Arhive = /** @class */ (function () {
         core_1.Component({
             selector: 'arhive-app',
             templateUrl: './src/arhive/arhive.html',
-            styleUrls: ['./src/arhive/arhive.css'],
+            styleUrls: ['./src/arhive/arhive.css',
+                './src/main/menu.css'],
             providers: []
         }),
         __metadata("design:paramtypes", [service_1.Service])

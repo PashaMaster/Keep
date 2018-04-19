@@ -8,12 +8,14 @@ declare var $ :any;
 @Component({
     selector: 'arhive-app',
     templateUrl: './src/arhive/arhive.html',
-    styleUrls: ['./src/arhive/arhive.css'],
+    styleUrls: ['./src/arhive/arhive.css',
+                './src/main/menu.css'],
     providers: []
 })
 
 export class Arhive  implements OnInit{
-	/** 
+
+    /** 
       * Массив записок
       */
     items: NoteItem[];
@@ -46,53 +48,20 @@ export class Arhive  implements OnInit{
       
       this.getItems();
       this.getAthiveItems();
+      this.getHelper();      
     }
 
     /**
-      * Получение подсказок
-      * @param = index номер подсказки
-      */   
-    titleHelper(index:number):string {
-      
-      if (this.getHelper()=='true')
-      {
-        let title:string;        
-        switch (index) {
-          case 1:
-            title="Number";
-            break;
-          case 2:
-            title="Note";
-            break;
-          case 3:
-            title="Note";
-            break;
-          case 4:
-            title="Date";
-            break;
-          case 5:
-            title="Name";
-            break;
-          case 6:
-            title="Delete";
-            break;
-          default:
-            title="";
-            break;
-        }
-        return title;      
-      }
+      * Метод, который включает/выключает подсказки на странице
+      */
+    getHelper() {
+
+      if (this._noteService.getHelper()=='true')
+        $(".helper span").css({"display": "block"});
       else
-        return "null";      
-
+        $(".helper span").css({"display": "none"});
     }
 
-    /**
-      * Получение включения/выключения подсказок
-      */   
-    getHelper():string {
-      return this._noteService.getHelper();
-    }
 
     /** 
       * Метод,который получает данные архива из хранилища
