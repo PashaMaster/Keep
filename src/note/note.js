@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var note_item_1 = require("../item/note.item");
-var service_1 = require("../main/service");
+var service_1 = require("../service/service");
 var delete_item_1 = require("../item/delete.item");
 var add, detail;
 var NoteComponent = /** @class */ (function () {
@@ -184,7 +184,7 @@ var NoteComponent = /** @class */ (function () {
             selector: 'note-app',
             templateUrl: './src/note/note.html',
             styleUrls: ['./src/note/note.css',
-                './src/main/menu.css'],
+                './src/menu/menu.css'],
             providers: []
         }),
         __metadata("design:paramtypes", [service_1.Service])

@@ -15,7 +15,7 @@ var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var http_2 = require("@angular/http");
 var note_1 = require("../note/note");
-var start_page_1 = require("./start.page");
+var start_page_1 = require("../menu/start.page");
 var garbage_1 = require("../garbage/garbage");
 var arhive_1 = require("../arhive/arhive");
 /**

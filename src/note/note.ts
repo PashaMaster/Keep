@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NoteItem } from '../item/note.item'; 
-import { Service } from '../main/service'; 
+import { Service } from '../service/service'; 
 import { DeleteItem } from '../item/delete.item'; 
 
 declare var jquery:any;
@@ -12,7 +12,7 @@ var add, detail;
     selector: 'note-app',
     templateUrl: './src/note/note.html',
     styleUrls: ['./src/note/note.css',
-                './src/main/menu.css'],
+                './src/menu/menu.css'],
     providers: []
 })
 

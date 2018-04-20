@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateService} from '@ngx-translate/core';
 import { NoteComponent } from '../note/note';
 import { NoteItem } from '../item/note.item'; 
-import { Service } from '../main/service'; 
+import { Service } from '../service/service'; 
 import { Arhive } from '../arhive/arhive';
 
 declare var $:any;
@@ -14,8 +14,8 @@ var settings;
 
 @Component({
     selector: 'main-app',
-    templateUrl: './src/main/menu.html',
-    styleUrls: ['./src/main/menu.css'],
+    templateUrl: './src/menu/menu.html',
+    styleUrls: ['./src/menu/menu.css'],
     providers: [Service]
 })
 

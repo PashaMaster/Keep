@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var core_2 = require("@ngx-translate/core");
-var service_1 = require("../main/service");
+var service_1 = require("../service/service");
 var svg;
 var settings;
 var AppComponent = /** @class */ (function () {
@@ -191,8 +191,8 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'main-app',
-            templateUrl: './src/main/menu.html',
-            styleUrls: ['./src/main/menu.css'],
+            templateUrl: './src/menu/menu.html',
+            styleUrls: ['./src/menu/menu.css'],
             providers: [service_1.Service]
         }),
         __metadata("design:paramtypes", [core_2.TranslateService, service_1.Service])

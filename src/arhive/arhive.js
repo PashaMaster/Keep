@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var note_item_1 = require("../item/note.item");
-var service_1 = require("../main/service");
+var service_1 = require("../service/service");
 var Arhive = /** @class */ (function () {
     /**
       * Конструктор класса
@@ -114,7 +114,7 @@ var Arhive = /** @class */ (function () {
             selector: 'arhive-app',
             templateUrl: './src/arhive/arhive.html',
             styleUrls: ['./src/arhive/arhive.css',
-                './src/main/menu.css'],
+                './src/menu/menu.css'],
             providers: []
         }),
         __metadata("design:paramtypes", [service_1.Service])

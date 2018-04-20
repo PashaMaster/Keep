@@ -8,10 +8,10 @@ import { RouterModule }      from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import { NoteComponent } from '../note/note';
-import { AppComponent } from './start.page';
+import { AppComponent } from '../menu/start.page';
 import { GarbageComponent } from '../garbage/garbage';
 import { Arhive } from '../arhive/arhive';
-import { Service } from '../main/service'; 
+import { Service } from '../service/service'; 
 
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NoteItem } from '../item/note.item'; 
 import { DeleteItem } from '../item/delete.item'; 
-import { Service } from '../main/service'; 
+import { Service } from '../service/service'; 
 
 declare var $ :any;
 
@@ -10,7 +10,7 @@ declare var $ :any;
     selector: 'garbage-app',
     templateUrl: './src/garbage/garbage.html',
     styleUrls: ['./src/garbage/garbage.css',
-                './src/main/menu.css'],
+                './src/menu/menu.css'],
     providers: []
 })
 

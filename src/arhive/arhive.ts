@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NoteItem } from '../item/note.item'; 
-import { Service } from '../main/service'; 
+import { Service } from '../service/service'; 
 
 declare var $ :any;
 
@@ -9,7 +9,7 @@ declare var $ :any;
     selector: 'arhive-app',
     templateUrl: './src/arhive/arhive.html',
     styleUrls: ['./src/arhive/arhive.css',
-                './src/main/menu.css'],
+                './src/menu/menu.css'],
     providers: []
 })
 

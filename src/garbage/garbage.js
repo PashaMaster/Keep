@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var note_item_1 = require("../item/note.item");
 var delete_item_1 = require("../item/delete.item");
-var service_1 = require("../main/service");
+var service_1 = require("../service/service");
 var GarbageComponent = /** @class */ (function () {
     /**
       * Конструктор класса
@@ -132,7 +132,7 @@ var GarbageComponent = /** @class */ (function () {
             selector: 'garbage-app',
             templateUrl: './src/garbage/garbage.html',
             styleUrls: ['./src/garbage/garbage.css',
-                './src/main/menu.css'],
+                './src/menu/menu.css'],
             providers: []
         }),
         __metadata("design:paramtypes", [service_1.Service])
