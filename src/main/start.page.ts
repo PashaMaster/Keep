@@ -208,21 +208,20 @@ export class AppComponent{
     /**
       * Получение включения/выключения подсказок
       */   
-    getHelper():string {
-      return this._noteService.getHelper();
+    getHelper() {
+
+      if (this._noteService.getHelper()=='true')
+        $(".helper span").css({"display": "block"});
+      else
+        $(".helper span").css({"display": "none"});
     }
 
     /**
       * Включаем/выключаем подсказки
       */   
     setHelper(flag:string) {
-
-      this._noteService.setHelper(flag);
-
-      if (this.getHelper()=='true')
-        $(".helper span").css({"display": "block"});
-      else
-        $(".helper span").css({"display": "none"});
+      this._noteService.setHelper(flag);      
+      this.getHelper();
     }
 
     /** 

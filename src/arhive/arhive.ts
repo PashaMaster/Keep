@@ -120,6 +120,7 @@ export class Arhive  implements OnInit{
           $('#showDetail'+item.id).slideToggle();
           this.selectedItem = this.testItem;
         }
+        this.getHelper();
     }
 
     /** Метод, который убырает записку из архива

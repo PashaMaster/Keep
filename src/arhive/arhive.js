@@ -90,6 +90,7 @@ var Arhive = /** @class */ (function () {
             $('#showDetail' + item.id).slideToggle();
             this.selectedItem = this.testItem;
         }
+        this.getHelper();
     };
     /** Метод, который убырает записку из архива
       * @param=id номер удаляемого элемента

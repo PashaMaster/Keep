@@ -91,6 +91,7 @@ var GarbageComponent = /** @class */ (function () {
             $('#showDetail' + item.id).slideToggle();
             this.selectedItem = this.testItem;
         }
+        this.getHelper();
     };
     /** Метод, который убырает записку из корзиныы
       * @param=id номер удаляемого элемента

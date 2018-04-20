@@ -163,17 +163,17 @@ var AppComponent = /** @class */ (function () {
       * Получение включения/выключения подсказок
       */
     AppComponent.prototype.getHelper = function () {
-        return this._noteService.getHelper();
+        if (this._noteService.getHelper() == 'true')
+            $(".helper span").css({ "display": "block" });
+        else
+            $(".helper span").css({ "display": "none" });
     };
     /**
       * Включаем/выключаем подсказки
       */
     AppComponent.prototype.setHelper = function (flag) {
         this._noteService.setHelper(flag);
-        if (this.getHelper() == 'true')
-            $(".helper span").css({ "display": "block" });
-        else
-            $(".helper span").css({ "display": "none" });
+        this.getHelper();
     };
     /**
       * Читаем заголовок для меню

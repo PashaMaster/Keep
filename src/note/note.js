@@ -119,6 +119,7 @@ var NoteComponent = /** @class */ (function () {
             this.selectedItem = this.testItem;
         }
         this.setItems();
+        this.getHelper();
     };
     /**
      * Метод, который добавляет записку

@@ -159,6 +159,7 @@ export class NoteComponent implements OnInit{
           this.selectedItem = this.testItem;
         }
         this.setItems();
+        this.getHelper();
     }
 
      /** 
