@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var core_2 = require("@ngx-translate/core");
+var grafic_item_1 = require("../item/grafic.item");
 var service_1 = require("../service/service");
 var svg;
 var settings;
@@ -94,11 +95,8 @@ var AppComponent = /** @class */ (function () {
             { browser: arhiveName, rate: this.countArhive },
             { browser: garbageName, rate: this.countGarbage },
         ];
-        // функция для получения цветов
         var color = d3.scale.category10();
-        // задаем радиус
         var radius = Math.min((width - 60) - 2 * margin, height - 2 * margin) / 2;
-        // создаем элемент арки с радиусом
         var arc = d3.svg.arc()
             .outerRadius(radius)
             .innerRadius(0);
@@ -151,6 +149,108 @@ var AppComponent = /** @class */ (function () {
             .attr("dy", ".35em")
             .style("text-anchor", "end")
             .text(function (d) { return d.data.browser; });
+    };
+    /**
+      * Формируем массив данных для отрисовки графика
+      */
+    AppComponent.prototype.getDataGrafic = function () {
+        var dataGrafic = [];
+        // тестовые записи
+        dataGrafic.push(new grafic_item_1.GraficItem(5, new Date(2018, 3, 17)));
+        dataGrafic.push(new grafic_item_1.GraficItem(1, new Date(2018, 3, 19)));
+        dataGrafic.push(new grafic_item_1.GraficItem(5, new Date(2018, 3, 20)));
+        dataGrafic.push(new grafic_item_1.GraficItem(11, new Date(2018, 3, 23)));
+        dataGrafic.push(new grafic_item_1.GraficItem(9, new Date(2018, 3, 27)));
+        //
+        var deleteItems;
+        var f;
+        deleteItems = this._noteService.getDeleteItems();
+        deleteItems.forEach(function (item, i, deleteItems) {
+            f = false;
+            dataGrafic.forEach(function (data, j, dataGrafic) {
+                if (item.date.toDateString() == data.date.toDateString()) {
+                    data.count++;
+                    f = true;
+                }
+            });
+            if (!f) {
+                dataGrafic.push(new grafic_item_1.GraficItem(1, item.date));
+            }
+        });
+        return dataGrafic;
+    };
+    /**
+      * Строим график по данным удаления записок
+      */
+    AppComponent.prototype.getGrafic = function () {
+        this.getDataGrafic();
+        this.clearSVG();
+        var height = 300, width = 600, margin = 30, Data = this.getDataGrafic();
+        svg = d3.select("body").select("svg")
+            .attr("class", "axis")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g");
+        var xAxisLength = width - 2 * margin;
+        var yAxisLength = height - 2 * margin;
+        var maxValue = d3.max(Data, function (d) { return d.count; });
+        var scaleX = d3.time.scale()
+            .domain([d3.min(Data, function (d) { return d.date; }),
+            d3.max(Data, function (d) { return d.date; })])
+            .range([0, xAxisLength]);
+        var scaleY = d3.scale.linear()
+            .domain([maxValue, 0])
+            .range([0, yAxisLength]);
+        var xAxis = d3.svg.axis()
+            .scale(scaleX)
+            .orient("bottom")
+            .tickFormat(d3.time.format('%e %B'));
+        var yAxis = d3.svg.axis()
+            .scale(scaleY)
+            .orient("left");
+        svg.append("g")
+            .attr("class", "x-axis")
+            .attr("transform", "translate(" + margin + "," + (height - margin) + ")")
+            .call(xAxis);
+        svg.append("g")
+            .attr("class", "y-axis")
+            .attr("transform", "translate(" + margin + "," + margin + ")")
+            .call(yAxis);
+        d3.selectAll("g.x-axis g.tick")
+            .append("line")
+            .classed("grid-line", true)
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", 0)
+            .attr("y2", -(height - 2 * margin));
+        d3.selectAll("g.y-axis g.tick")
+            .append("line")
+            .classed("grid-line", true)
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", xAxisLength)
+            .attr("y2", 0);
+        createChart(Data, "steelblue");
+        function createChart(data, colorStroke) {
+            var line = d3.svg.line()
+                .x(function (d) { return scaleX(d.date) + margin; })
+                .y(function (d) { return scaleY(d.count) + margin; });
+            var area = d3.svg.area()
+                .x(function (d) { return d.date; })
+                .y0(height - margin)
+                .y1(function (d) { return d.count; });
+            var g = svg.append("g");
+            g.append("path")
+                .attr("d", area(data))
+                .style("fill", "lightblue");
+            g.append("path")
+                .attr("d", line(data))
+                .style("stroke", colorStroke)
+                .style("fill", "none")
+                .style("stroke-opacity", 0.6)
+                .style("stroke-width", 2.5);
+        }
+        ;
     };
     /**
       * Изменение цвета заметок

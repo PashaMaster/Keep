@@ -57,7 +57,7 @@ ul#navigation li a {
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
 }
 
-l#navigation li a {
+ul#navigation li a {
 	display: block;
 	margin-left: -2px;
 	width: 100px;
@@ -352,4 +352,24 @@ select {
   padding: 10px; 
   width: 200px;
   margin-bottom: 10px;
+}
+
+.axis {
+   stroke: #000;
+   stroke-opacity: 0.2;
+}
+.axis line {
+   fill: none;
+   stroke: #333;
+}
+.axis path{
+   fill: none;
+   stroke: #333;
+}
+.grid-line {
+   stroke: #000;
+   stroke-opacity: 0.2;
+}
+.axis text {
+   font: 10px Arial;
 }
