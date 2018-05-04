@@ -17,6 +17,10 @@ var Service = /** @class */ (function () {
       */
     function Service() {
         /**
+          * Поле, которое хранит текущее позиционирование
+          */
+        this.position = 'block';
+        /**
           * Флаг, котрый хранит данные о включении/выключении подсказок
           */
         this.anotation = 'true';
@@ -93,6 +97,18 @@ var Service = /** @class */ (function () {
       */
     Service.prototype.getColor = function () {
         return this.color;
+    };
+    /**
+      * Метод записи позиционирования
+      */
+    Service.prototype.setPosition = function (position) {
+        this.position = position;
+    };
+    /**
+      * Метод получения позиционирования
+      */
+    Service.prototype.getPosition = function () {
+        return this.position;
     };
     Service = __decorate([
         core_1.Injectable()

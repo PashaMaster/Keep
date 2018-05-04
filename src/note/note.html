@@ -1,16 +1,18 @@
 <div class="content">
-  <ul class="notes">
+  <ul class="notesTop">
       <li>
-          <span class="badge">
+          <span class="badgeTop">
             ID
           </span>
-          <div class="note helper">
+          <div class="noteTop helper">
             <span class="custom classic">
               <em>{{'NOTES.Note' | translate}}</em>
             </span>
             {{'NOTES.Note' | translate}}
           </div>
       </li>
+   </ul>
+   <ul class="notes">
       <li id = {{getColor()}}
           *ngFor="let item of items"
           [class.selected]="item === selectedItem" 
@@ -68,17 +70,25 @@
           <form class="form-group">
             <input class="form-control addinput" name="text" [(ngModel)]="textN" 
              placeholder = "{{'NOTES.Note' | translate}}" #text="ngModel" required/>
+            <button class="buttonAdd add" (click)="getList()"> </button>
+             <input id="noteList1" class="form-control addinputT" name="text" [(ngModel)]="textN" 
+             placeholder = "{{'NOTES.Note' | translate}}" #text="ngModel" required/>
+            <input id="noteList2" class="form-control addinputT" name="text" [(ngModel)]="textN" 
+             placeholder = "{{'NOTES.Note' | translate}}" #text="ngModel" required/>
+             <input id="noteList3" class="form-control addinputT" name="text" [(ngModel)]="textN" 
+             placeholder = "{{'NOTES.Note' | translate}}" #text="ngModel" required/>
+            <button id="noteListB" class="buttonAdd cross" (click)="delListElemtnt()"> </button>
             <input class="form-control addinput" name="date" type="date" [(ngModel)]="dateN" 
               placeholder = "{{'NOTES.Date' | translate}}" />
             <input class="form-control addinput" name="name" [(ngModel)]="nameN" 
               placeholder = "{{'NOTES.Name' | translate}}" />
-            <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw addbutton helper" (click)="addItem(textN, dateN, nameN)">
+            <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw addbutton helper addHelp" (click)="addItem(textN, dateN, nameN)">
                 <span class="custom classic">
                   <em>{{'NOTES.Add' | translate}}</em>
                 </span> 
                 {{'NOTES.Add' | translate}}
              </button>
-             <button type="reset" class="btn btn-default btnw addbutton helper">
+             <button type="reset" class="btn btn-default btnw addbutton helper addHelp">
                 <span class="custom classic">
                   <em>{{'NOTES.Clear' | translate}}</em>
                 </span> 

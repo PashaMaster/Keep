@@ -27,7 +27,10 @@
 		"Yellow":"Yellow",
 		"Clear":"Clear",
 		"AddDiagram":"Add diagram",
-		"AddGrafic":"Add grafic"
+		"AddGrafic":"Add grafic",
+		"Position":"Position",
+		"Block":"Block",
+		"Inline":"Inline"
 	},
 	"NOTES":
 	{

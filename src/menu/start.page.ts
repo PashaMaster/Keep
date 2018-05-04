@@ -303,12 +303,12 @@ export class AppComponent{
         function createChart (data, colorStroke){
          
           var line = d3.svg.line()
-              //.interpolate("basis")
+              .interpolate("basis")
               .x(function(d) { return scaleX(d.date)+margin; })
               .y(function(d){return scaleY(d.count)+margin;});
                    
           var area = d3.svg.area()
-              //.interpolate("basis")
+              .interpolate("basis")
               .x(function(d) { return d.date; })
               .y0(height - margin)
               .y1(function(d) { return d.count; });
@@ -374,5 +374,25 @@ export class AppComponent{
     setTitle(title: string):void {
       
       this.title = title;
+    }
+
+    getPosition() {
+      if (this._noteService.getPosition() == 'block')
+        $(".notes li").css({"width": "calc(100% /2 - 15px)"});
+      else
+        $(".notes li").css({"width": "calc(100% - 15px)"});
+    }
+
+    /** 
+      * Устанавливаем позицию для блоков
+      * @param=position свойство
+      */ 
+    setPosition(position:string) {
+
+      if (position=='1')
+        this._noteService.setPosition('inline');
+      else
+        this._noteService.setPosition('block');
+      this.getPosition();
     }
 }

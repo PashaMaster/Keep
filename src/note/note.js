@@ -41,10 +41,36 @@ var NoteComponent = /** @class */ (function () {
         document.querySelector('.closeAdd').onclick = function () {
             add.close();
         };
+        this.numberList = 1;
+        this.initList();
         this.getItems();
         this.getDeleteItems();
         this.getAthiveItems();
         this.getHelper();
+        this.getPosition();
+    };
+    NoteComponent.prototype.getPosition = function () {
+        if (this._noteService.getPosition() == 'block')
+            $(".notes").css("width", "calc(100% / 4- 15px)");
+        else
+            $(".notes").css("width", "calc(100% - 15px)");
+    };
+    NoteComponent.prototype.initList = function () {
+        $(".addinputT").css({ "display": "none" });
+        $("#noteListB").css({ "display": "none" });
+    };
+    NoteComponent.prototype.delListElemtnt = function () {
+        this.numberList--;
+        $("#noteList" + this.numberList.toString()).css({ "display": "none" });
+        if (this.numberList == 1)
+            $("#noteListB").css({ "display": "none" });
+    };
+    NoteComponent.prototype.getList = function () {
+        if (this.numberList <= 3) {
+            $("#noteList" + this.numberList.toString()).css({ "display": "block" });
+            $("#noteListB").css({ "display": "block" });
+            this.numberList++;
+        }
     };
     /**
      * Метод, который включает/выключает подсказки на странице

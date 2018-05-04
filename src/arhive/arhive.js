@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var note_item_1 = require("../item/note.item");
 var service_1 = require("../service/service");
+//declare tyeerr = 'ewe';
 var Arhive = /** @class */ (function () {
     /**
       * Конструктор класса

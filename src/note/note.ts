@@ -18,6 +18,11 @@ var add, detail;
 
 export class NoteComponent implements OnInit{
 
+     /** 
+      * Кол элементов списка
+      */
+    numberList:number;
+
     /** 
       * Тестовый веделяемый элемент
       */
@@ -60,10 +65,40 @@ export class NoteComponent implements OnInit{
   		document.querySelector('.closeAdd').onclick = function() {
   		  add.close();
   		};
+      this.numberList=1; 
+      this.initList();
       this.getItems();
       this.getDeleteItems();
       this.getAthiveItems();
-      this.getHelper(); 
+      this.getHelper();    
+      this.getPosition();  
+    }
+
+    getPosition() {
+      if (this._noteService.getPosition() == 'block')
+        $(".notes").css("width", "calc(100% / 4- 15px)");
+      else
+        $(".notes").css("width", "calc(100% - 15px)");
+    }
+
+    initList() {
+      $(".addinputT").css({"display": "none"});
+      $("#noteListB").css({"display": "none"});
+    }
+    
+    delListElemtnt() {
+      this.numberList--;
+      $("#noteList"+this.numberList.toString()).css({"display": "none"});
+      if (this.numberList == 1)
+        $("#noteListB").css({"display": "none"});      
+    }
+
+    getList() {
+      if (this.numberList <=3)  {
+        $("#noteList"+this.numberList.toString()).css({"display": "block"});
+        $("#noteListB").css({"display": "block"});
+        this.numberList++;
+      }
     }
 
      /**

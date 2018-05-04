@@ -11,6 +11,11 @@ import { DeleteItem } from '../item/delete.item'; 
 export class Service {
 
 	/**
+	  * Поле, которое хранит текущее позиционирование
+	  */
+	private position: string = 'block';
+
+	/**
 	  * Флаг, котрый хранит данные о включении/выключении подсказок
 	  */
 	private anotation: string = 'true';
@@ -111,4 +116,18 @@ export class Service {
 	getColor() {		
 		return this.color;
 	}	
+
+	/**
+	  * Метод записи позиционирования 
+	  */
+	setPosition(position: string) {
+		this.position=position;	
+	}
+
+	/**
+	  * Метод получения позиционирования
+	  */
+	getPosition() {		
+		return this.position;
+	}		
 }

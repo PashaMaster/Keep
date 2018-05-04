@@ -4,6 +4,7 @@ import { NoteItem } from '../item/note.item'; 
 import { Service } from '../service/service'; 
 
 declare var $ :any;
+//declare tyeerr = 'ewe';
 
 @Component({
     selector: 'arhive-app',

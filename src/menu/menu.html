@@ -65,6 +65,20 @@
       </div>
       <div class="setting helper">
           <span class="custom classic">
+            <em>{{'HOME.Position' | translate}}</em>
+          </span>
+          <label>{{'HOME.Position' | translate}}</label>
+          <select #posSelect (change)="setPosition(posSelect.value)">
+              <option [value]=0>
+                  {{'HOME.Block' | translate}}
+              </option>
+              <option [value]=1>
+                  {{'HOME.Inline' | translate}}
+              </option>
+          </select>
+      </div>
+      <div class="setting helper">
+          <span class="custom classic">
             <em>{{'HOME.Helper' | translate}}</em>
           </span>
           <label>{{'HOME.Helper' | translate}}</label>
@@ -100,7 +114,7 @@
               </option>
           </select>
       </div>
-      <div class="setting diagram">
+      <div class="diagram">
           <a class="button" (click)="getDiagram('Note','Arhive','Garbage')">{{'HOME.AddDiagram' | translate}}</a>
           <a class="button" (click)="getGrafic()">{{'HOME.AddGrafic' | translate}}</a>
           <a class="button" (click)="clearSVG()">{{'HOME.Clear' | translate}}</a>

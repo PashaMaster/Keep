@@ -161,7 +161,7 @@ ul#navigation .contacts a     {
 }
 .close:before {
 	 color: rgba(255, 255, 255, 0.9);
-	 content: "X";
+	 content: "✖";
 	 text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
 	 font-size: 12px;
 }
@@ -173,16 +173,20 @@ ul#navigation .contacts a     {
 	 -o-transform: rotate(360deg);
 	 transform: rotate(360deg); 
 }
+.setting {
+	float: left;
+	width: calc(100% / 2 - 15px);
+}
 
 .setting label{
-	width: 15%;
+	width: 25%;
 	margin-top: 10px;
 	margin-left: 10px;
 	font: "Courier New";
 }
 
 .setting select{
-	width: 20%;
+	width: 50%;
 	margin-top: 10px;
 	border: 1px solid #6C7231;
     border-radius: 3px;
@@ -313,7 +317,8 @@ ul#navigation .contacts a     {
   padding: 0.5em 0.8em 0.5em 0.8em; 
 }
 .diagram a.button {
-  margin-left: 5px;
+  margin-top: 20px;
+  margin-left: 10px;
   font-family: Candara, Tahoma, Geneva, sans-serif;
   font-size: 1.1em; 
   font-weight: 500;
@@ -373,3 +378,7 @@ select {
 .axis text {
    font: 10px Arial;
 }
+.zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
