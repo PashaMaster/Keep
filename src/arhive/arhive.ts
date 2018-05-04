@@ -29,7 +29,7 @@ export class Arhive  implements OnInit{
     /** 
       * Тестовый веделяемый элемент
       */
-    testItem: NoteItem = {id: 0, textNote: "", dateOfBegin: new Date(''), autor: ""};
+    testItem: NoteItem = {id: 0, textNote: "", dateOfBegin: new Date(''), autor: "", textList: [] };
 
     /** 
       * Выделяемый элемент
@@ -133,13 +133,14 @@ export class Arhive  implements OnInit{
       let newItem: NoteItem;
       this.itemsArhive.forEach(function(item,i, itemsArhive) { 
         if (item.id != id)
-          arhItems.push(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+          arhItems.push(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor, item.textList));
         else 
-          newItem=(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+          newItem=(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor, item.textList));
        });
       this.itemsArhive=arhItems;
-      this.items.push(new NoteItem(this.items[this.items.length-1].id+1, newItem.textNote, newItem.dateOfBegin, newItem.autor));
+      this.items.push(new NoteItem(this.items[this.items.length-1].id+1, newItem.textNote, newItem.dateOfBegin, newItem.autor, newItem.textList));
       this.setItems();
       this.setAthiveItems();
     }
+    
 }

@@ -74,6 +74,9 @@ export class NoteComponent implements OnInit{
       this.getPosition();  
     }
 
+    /**
+      * Метод, который меняет отображение блоков
+      */
     getPosition() {
       if (this._noteService.getPosition() == 'block')
         $(".notes").css("width", "calc(100% / 4- 15px)");
@@ -81,11 +84,17 @@ export class NoteComponent implements OnInit{
         $(".notes").css("width", "calc(100% - 15px)");
     }
 
+    /**
+      * Метод, который инициализирует список
+      */    
     initList() {
       $(".addinputT").css({"display": "none"});
       $("#noteListB").css({"display": "none"});
     }
-    
+
+    /**
+      * Метод, который удаляет элемент списка для пользователя
+      */
     delListElemtnt() {
       this.numberList--;
       $("#noteList"+this.numberList.toString()).css({"display": "none"});
@@ -93,6 +102,9 @@ export class NoteComponent implements OnInit{
         $("#noteListB").css({"display": "none"});      
     }
 
+    /**
+      * Метод, который добавляет элемент списка для пользователя
+      */
     getList() {
       if (this.numberList <=3)  {
         $("#noteList"+this.numberList.toString()).css({"display": "block"});
@@ -203,7 +215,7 @@ export class NoteComponent implements OnInit{
       * @param=dateN дата, которую нужно добавить
       * @param=nameN автор, которого нужно добавить
       */
-    addItem(textN: string, dateN: Date, nameN: string): void {
+    addItem(textN: string, dateN: Date, nameN: string, nameL1: string, nameL2: string, nameL3: string): void {
       
       var lastItem;
       let id;
@@ -214,8 +226,15 @@ export class NoteComponent implements OnInit{
         lastItem = this.items[this.items.length - 1];
         id = lastItem.id+1;
       }
-      
-      this.items.push(new NoteItem(id, textN, dateN, nameN));
+
+      // формируем список
+      let nameList : string[] = [];
+      if (nameL1!=null) nameList.push(nameL1);
+      if (nameL2!=null) nameList.push(nameL2);
+      if (nameL3!=null) nameList.push(nameL3);
+
+
+      this.items.push(new NoteItem(id, textN, dateN, nameN, nameList));
       this.setItems();
     }
 
@@ -229,7 +248,7 @@ export class NoteComponent implements OnInit{
       let delItem: DeleteItem;
       this.items.forEach(function(item,i, items) { 
         if (item.id != id)
-          newItems.push(new NoteItem(item.id, item.textNote,  item.dateOfBegin, item.autor));
+          newItems.push(new NoteItem(item.id, item.textNote,  item.dateOfBegin, item.autor, item.textList));
         else 
           delItem=(new DeleteItem(item, new Date()));
        });
@@ -253,13 +272,14 @@ export class NoteComponent implements OnInit{
       let arhItems: NoteItem;
       this.items.forEach(function(item,i, items) { 
         if (item.id != id)
-          newItem.push(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+          newItem.push(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor, item.textList));
         else 
-          arhItems=(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+          arhItems=(new NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor, item.textList));
        });
       this.items=newItem;
-      this.itemsArhive.push(new NoteItem(arhItems.id, arhItems.textNote, arhItems.dateOfBegin, arhItems.autor));
+      this.itemsArhive.push(new NoteItem(arhItems.id, arhItems.textNote, arhItems.dateOfBegin, arhItems.autor, arhItems.textList));
       this.setItems();
       this.setAthiveItems();
     }
+    
 } 

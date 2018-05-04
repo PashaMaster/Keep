@@ -29,7 +29,7 @@ export class GarbageComponent implements OnInit{
     /** 
       * Тестовый веделяемый элемент
       */
-    testItem: NoteItem = {id: 0, textNote: "", dateOfBegin: new Date(''), autor: ""};
+    testItem: NoteItem = {id: 0, textNote: "", dateOfBegin: new Date(''), autor: "", textList: []};
 
     /** 
       * Выделяемый элемент
@@ -134,7 +134,7 @@ export class GarbageComponent implements OnInit{
         if (item.item.id != id)
           delItems.push(new DeleteItem(item.item, new Date()));
         else 
-          newItem=(new NoteItem(item.item.id, item.item.textNote, item.item.dateOfBegin, item.item.autor));
+          newItem=(new NoteItem(item.item.id, item.item.textNote, item.item.dateOfBegin, item.item.autor, item.item.textList));
        });
       this.itemsDelete=delItems;
       let index:number;
@@ -142,7 +142,7 @@ export class GarbageComponent implements OnInit{
         index=1;
       else
         index=this.items[this.items.length-1].id+1;
-      this.items.push(new NoteItem(index, newItem.textNote, newItem.dateOfBegin, newItem.autor));
+      this.items.push(new NoteItem(index, newItem.textNote, newItem.dateOfBegin, newItem.autor, newItem.textList));
       this.setItems();
       this.setDeleteItems();
     }

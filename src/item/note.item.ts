@@ -9,10 +9,15 @@ export class NoteItem{
 	id : number;
 	
 	/**
-	  * Поле которое хранит текст записки
+	  * Поле которое хранит заголовок записки
 	  */
 	textNote: string;
     
+	/**
+	  * Поле которое хранит список записки
+	  */
+	textList: string[];
+
 	/**
 	  * Поле которое хранит дату
 	  */
@@ -26,15 +31,17 @@ export class NoteItem{
 	/**
 	  * Конструктор класса
 	  * @param=id номер записки
-	  * @param=textNote текст записки
+	  * @param=textNote заголовок записки
 	  * @param=dateOfBegin дата
 	  * @param=autor имя автора
+	  * @param=textList список записки
 	  */
-	constructor(id: number, textNote: string, dateOfBegin: Date, autor: string) {
+	constructor(id: number, textNote: string, dateOfBegin: Date, autor: string, textList: string[]) {
   
 		this.id=id;
         this.textNote = textNote;
 		this.dateOfBegin = dateOfBegin;
 		this.autor=autor;
+		this.textList=textList;
     }
 }

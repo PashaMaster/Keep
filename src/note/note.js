@@ -49,22 +49,34 @@ var NoteComponent = /** @class */ (function () {
         this.getHelper();
         this.getPosition();
     };
+    /**
+      * Метод, который меняет отображение блоков
+      */
     NoteComponent.prototype.getPosition = function () {
         if (this._noteService.getPosition() == 'block')
             $(".notes").css("width", "calc(100% / 4- 15px)");
         else
             $(".notes").css("width", "calc(100% - 15px)");
     };
+    /**
+      * Метод, который инициализирует список
+      */
     NoteComponent.prototype.initList = function () {
         $(".addinputT").css({ "display": "none" });
         $("#noteListB").css({ "display": "none" });
     };
+    /**
+      * Метод, который удаляет элемент списка для пользователя
+      */
     NoteComponent.prototype.delListElemtnt = function () {
         this.numberList--;
         $("#noteList" + this.numberList.toString()).css({ "display": "none" });
         if (this.numberList == 1)
             $("#noteListB").css({ "display": "none" });
     };
+    /**
+      * Метод, который добавляет элемент списка для пользователя
+      */
     NoteComponent.prototype.getList = function () {
         if (this.numberList <= 3) {
             $("#noteList" + this.numberList.toString()).css({ "display": "block" });
@@ -153,7 +165,7 @@ var NoteComponent = /** @class */ (function () {
      * @param=dateN дата, которую нужно добавить
      * @param=nameN автор, которого нужно добавить
      */
-    NoteComponent.prototype.addItem = function (textN, dateN, nameN) {
+    NoteComponent.prototype.addItem = function (textN, dateN, nameN, nameL1, nameL2, nameL3) {
         var lastItem;
         var id;
         if (this.items.length == 0)
@@ -162,7 +174,15 @@ var NoteComponent = /** @class */ (function () {
             lastItem = this.items[this.items.length - 1];
             id = lastItem.id + 1;
         }
-        this.items.push(new note_item_1.NoteItem(id, textN, dateN, nameN));
+        // формируем список
+        var nameList = [];
+        if (nameL1 != null)
+            nameList.push(nameL1);
+        if (nameL2 != null)
+            nameList.push(nameL2);
+        if (nameL3 != null)
+            nameList.push(nameL3);
+        this.items.push(new note_item_1.NoteItem(id, textN, dateN, nameN, nameList));
         this.setItems();
     };
     /**
@@ -174,7 +194,7 @@ var NoteComponent = /** @class */ (function () {
         var delItem;
         this.items.forEach(function (item, i, items) {
             if (item.id != id)
-                newItems.push(new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+                newItems.push(new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor, item.textList));
             else
                 delItem = (new delete_item_1.DeleteItem(item, new Date()));
         });
@@ -196,12 +216,12 @@ var NoteComponent = /** @class */ (function () {
         var arhItems;
         this.items.forEach(function (item, i, items) {
             if (item.id != id)
-                newItem.push(new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+                newItem.push(new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor, item.textList));
             else
-                arhItems = (new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+                arhItems = (new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor, item.textList));
         });
         this.items = newItem;
-        this.itemsArhive.push(new note_item_1.NoteItem(arhItems.id, arhItems.textNote, arhItems.dateOfBegin, arhItems.autor));
+        this.itemsArhive.push(new note_item_1.NoteItem(arhItems.id, arhItems.textNote, arhItems.dateOfBegin, arhItems.autor, arhItems.textList));
         this.setItems();
         this.setAthiveItems();
     };

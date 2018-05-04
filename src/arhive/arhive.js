@@ -23,7 +23,7 @@ var Arhive = /** @class */ (function () {
         /**
           * Тестовый веделяемый элемент
           */
-        this.testItem = { id: 0, textNote: "", dateOfBegin: new Date(''), autor: "" };
+        this.testItem = { id: 0, textNote: "", dateOfBegin: new Date(''), autor: "", textList: [] };
         /**
           * Выделяемый элемент
           */
@@ -101,12 +101,12 @@ var Arhive = /** @class */ (function () {
         var newItem;
         this.itemsArhive.forEach(function (item, i, itemsArhive) {
             if (item.id != id)
-                arhItems.push(new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+                arhItems.push(new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor, item.textList));
             else
-                newItem = (new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor));
+                newItem = (new note_item_1.NoteItem(item.id, item.textNote, item.dateOfBegin, item.autor, item.textList));
         });
         this.itemsArhive = arhItems;
-        this.items.push(new note_item_1.NoteItem(this.items[this.items.length - 1].id + 1, newItem.textNote, newItem.dateOfBegin, newItem.autor));
+        this.items.push(new note_item_1.NoteItem(this.items[this.items.length - 1].id + 1, newItem.textNote, newItem.dateOfBegin, newItem.autor, newItem.textList));
         this.setItems();
         this.setAthiveItems();
     };

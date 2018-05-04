@@ -7,15 +7,17 @@ var NoteItem = /** @class */ (function () {
     /**
       * Конструктор класса
       * @param=id номер записки
-      * @param=textNote текст записки
+      * @param=textNote заголовок записки
       * @param=dateOfBegin дата
       * @param=autor имя автора
+      * @param=textList список записки
       */
-    function NoteItem(id, textNote, dateOfBegin, autor) {
+    function NoteItem(id, textNote, dateOfBegin, autor, textList) {
         this.id = id;
         this.textNote = textNote;
         this.dateOfBegin = dateOfBegin;
         this.autor = autor;
+        this.textList = textList;
     }
     return NoteItem;
 }());

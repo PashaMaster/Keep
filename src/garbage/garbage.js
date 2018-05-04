@@ -23,7 +23,7 @@ var GarbageComponent = /** @class */ (function () {
         /**
           * Тестовый веделяемый элемент
           */
-        this.testItem = { id: 0, textNote: "", dateOfBegin: new Date(''), autor: "" };
+        this.testItem = { id: 0, textNote: "", dateOfBegin: new Date(''), autor: "", textList: [] };
         /**
           * Выделяемый элемент
           */
@@ -103,7 +103,7 @@ var GarbageComponent = /** @class */ (function () {
             if (item.item.id != id)
                 delItems.push(new delete_item_1.DeleteItem(item.item, new Date()));
             else
-                newItem = (new note_item_1.NoteItem(item.item.id, item.item.textNote, item.item.dateOfBegin, item.item.autor));
+                newItem = (new note_item_1.NoteItem(item.item.id, item.item.textNote, item.item.dateOfBegin, item.item.autor, item.item.textList));
         });
         this.itemsDelete = delItems;
         var index;
@@ -111,7 +111,7 @@ var GarbageComponent = /** @class */ (function () {
             index = 1;
         else
             index = this.items[this.items.length - 1].id + 1;
-        this.items.push(new note_item_1.NoteItem(index, newItem.textNote, newItem.dateOfBegin, newItem.autor));
+        this.items.push(new note_item_1.NoteItem(index, newItem.textNote, newItem.dateOfBegin, newItem.autor, newItem.textList));
         this.setItems();
         this.setDeleteItems();
     };

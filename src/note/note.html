@@ -39,7 +39,14 @@
                   </span>
                   {{'NOTES.Note' | translate}}:
                 </label>
-                <input class="form-control" name="text" [(ngModel)]="item.textNote">
+                <input class="form-control" name="text" [(ngModel)]="item.textNote">                
+                <label class="helper">
+                  <span class="custom classic">
+                    <em>{{'NOTES.List' | translate}}</em>
+                  </span>
+                  {{'NOTES.List' | translate}}:
+                </label>
+                <input class="form-control" name="textList" [(ngModel)]="item.textList">
                 <label class="helper">
                   <span class="custom classic">
                     <em>{{'NOTES.Date' | translate}}</em>
@@ -54,7 +61,7 @@
                   {{'NOTES.Name' | translate}}:
                 </label>
                 <input class="form-control" name="name" [(ngModel)]="item.autor" />
-                <button class="btn btn-default btnw arhive helper" (click)="addArhiveItem(item.id)">
+                <button class="btn btn-default btnw arhive  helper" (click)="addArhiveItem(item.id)">
                   <span class="custom classic">
                     <em>{{'NOTES.AddArhive' | translate}}</em>
                   </span>
@@ -70,19 +77,27 @@
           <form class="form-group">
             <input class="form-control addinput" name="text" [(ngModel)]="textN" 
              placeholder = "{{'NOTES.Note' | translate}}" #text="ngModel" required/>
+            
             <button class="buttonAdd add" (click)="getList()"> </button>
-             <input id="noteList1" class="form-control addinputT" name="text" [(ngModel)]="textN" 
-             placeholder = "{{'NOTES.Note' | translate}}" #text="ngModel" required/>
-            <input id="noteList2" class="form-control addinputT" name="text" [(ngModel)]="textN" 
-             placeholder = "{{'NOTES.Note' | translate}}" #text="ngModel" required/>
-             <input id="noteList3" class="form-control addinputT" name="text" [(ngModel)]="textN" 
-             placeholder = "{{'NOTES.Note' | translate}}" #text="ngModel" required/>
+            
+            <input id="noteList1" class="form-control addinputT" name="textList1" [(ngModel)]="textL1" 
+             placeholder = "{{'NOTES.List' | translate}}" />
+            
+            <input id="noteList2" class="form-control addinputT" name="textList2" [(ngModel)]="textL2" 
+             placeholder = "{{'NOTES.List' | translate}}" />
+            
+            <input id="noteList3" class="form-control addinputT" name="textList3" [(ngModel)]="textL3" 
+             placeholder = "{{'NOTES.List' | translate}}" />
+            
             <button id="noteListB" class="buttonAdd cross" (click)="delListElemtnt()"> </button>
+            
             <input class="form-control addinput" name="date" type="date" [(ngModel)]="dateN" 
               placeholder = "{{'NOTES.Date' | translate}}" />
+            
             <input class="form-control addinput" name="name" [(ngModel)]="nameN" 
               placeholder = "{{'NOTES.Name' | translate}}" />
-            <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw addbutton helper addHelp" (click)="addItem(textN, dateN, nameN)">
+            
+            <button [disabled]="text.invalid" type="reset" class="btn btn-default btnw addbutton helper addHelp" (click)="addItem(textN, dateN, nameN, textL1, textL2, textL3)">
                 <span class="custom classic">
                   <em>{{'NOTES.Add' | translate}}</em>
                 </span> 
