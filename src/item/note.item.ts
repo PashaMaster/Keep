@@ -27,7 +27,7 @@ export class NoteItem{
 	  * Поле которое хранит дату
 	  */
 	autor: string;
-
+	
 	/**
 	  * Конструктор класса
 	  * @param=id номер записки

@@ -16,6 +16,10 @@ input[type=range]::-webkit-slider-runnable-track {
   background: #607D8B;
 }
 
+input[type="file"]{
+    display: none;
+}
+
 .content {
   float: left;
   margin-left: 20%;

@@ -24,7 +24,7 @@ var NoteComponent = /** @class */ (function () {
         /**
           * Тестовый веделяемый элемент
           */
-        this.testItem = { id: 0, textNote: "", dateOfBegin: new Date(''), autor: "" };
+        this.testItem = { id: 0, textNote: "", dateOfBegin: new Date(''), autor: "", textList: [] };
         /**
           * Выделяемый элемент
           */
@@ -48,6 +48,36 @@ var NoteComponent = /** @class */ (function () {
         this.getAthiveItems();
         this.getHelper();
         this.getPosition();
+    };
+    /**
+      * Метод получения и отображения картинки
+      */
+    NoteComponent.prototype.addBackgroung = function (id) {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah' + id).attr('src', e.target.result);
+                    $('#blah' + id).css({ "display": "block" });
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#imgInp" + id).change(function () {
+            readURL(this);
+        });
+    };
+    /**
+      * Метод получения id img для картинки
+      */
+    NoteComponent.prototype.getIDImage = function (id) {
+        return 'blah' + id;
+    };
+    /**
+      * Метод получения id input для выбора картинки
+      */
+    NoteComponent.prototype.getInputImage = function (id) {
+        return 'imgInp' + id;
     };
     /**
       * Метод, который меняет отображение блоков

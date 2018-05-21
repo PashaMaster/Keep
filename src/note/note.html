@@ -32,7 +32,7 @@
               </button>
           </div>            
           <div id="{{selected(item)}}" class="detail" style="display: none;">
-             <form class="form-group">
+             <form class="form-group" style="width: 70%">
                 <label class="helper">
                   <span class="custom classic">
                     <em>{{'NOTES.Note' | translate}}</em>
@@ -60,13 +60,22 @@
                   </span>
                   {{'NOTES.Name' | translate}}:
                 </label>
-                <input class="form-control" name="name" [(ngModel)]="item.autor" />
+                <input class="form-control" name="name" [(ngModel)]="item.autor" /><br>
+                <img id={{getIDImage(item.id)}} src="#" style="display: none; width: 70%" />
                 <button class="btn btn-default btnw arhive  helper" (click)="addArhiveItem(item.id)">
                   <span class="custom classic">
                     <em>{{'NOTES.AddArhive' | translate}}</em>
                   </span>
                   {{'NOTES.AddArhive' | translate}}
-                </button>
+                </button>               
+                <div class="btn btn-default btnw arhive  helper" >
+                  <span class="custom classic">
+                    <em>{{'NOTES.AddImage' | translate}}</em>
+                  </span>
+                  <label (click)="addBackgroung(item.id)" style="font-weight: normal;">
+                      {{'NOTES.AddImage' | translate}} <input type="file" name="file" id={{getInputImage(item.id)}} >
+                  </label>                  
+                </div>
              </form>   
           </div>
       </li>
